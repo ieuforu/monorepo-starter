@@ -8,12 +8,12 @@
     "./next": "./next.js"
   },
   "peerDependencies": {
-    "@next/eslint-plugin-next": "^15.0.0 || ^16.0.0",
-    "eslint": "^9.0.0"
+    "@next/eslint-plugin-next": "^16.0.10",
+    "eslint": "^9.39.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@next/eslint-plugin-next": "^16.0.8",
+    "@next/eslint-plugin-next": "^16.0.10",
     "typescript-eslint": "^8.49.0"
   }
 }
