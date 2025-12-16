@@ -5,9 +5,15 @@
     "lib": ["ES2022"],
     "outDir": "dist",
     "rootDir": "src",
+    "baseUrl": ".",
     "composite": true
   },
 
   "include": ["src"],
-  "references": []
+  "exclude": ["node_modules", "dist"],
+
+  "references": [
+    // 如果 db 依赖于 @repo/validators
+    // { "path": "../validators" }
+  ]
 }

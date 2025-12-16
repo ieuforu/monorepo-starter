@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1765870135705,
+      "tag": "0000_gray_sharon_ventura",
+      "breakpoints": true
+    }
+  ]
+}

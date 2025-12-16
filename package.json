@@ -13,13 +13,14 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@repo/eslint-config": "workspace:*",
     "eslint": "^9.39.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
+    "tsup": "^8.5.1",
     "turbo": "^2.6.3",
-    "typescript-eslint": "^8.49.0",
-    "@repo/eslint-config": "workspace:*"
+    "typescript-eslint": "^8.49.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -29,5 +30,9 @@
     "*.{json,md,css}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   }
 }

@@ -5,9 +5,11 @@
     "lib": ["ES2022"],
     "outDir": "dist",
     "rootDir": "src",
+    "baseUrl": ".",
     "composite": true
   },
 
   "include": ["src"],
-  "references": []
+  "exclude": ["node_modules", "dist"],
+  "references": [{ "path": "../db" }, { "path": "../auth" }]
 }

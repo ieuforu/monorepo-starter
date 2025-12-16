@@ -3,5 +3,5 @@ export function cn(...classes: (string | undefined | false)[]) {
 }
 
 export function formatDate(date: Date): string {
-  return date.toTimeString().split(' ')[0]
+  return date.toTimeString().split(' ')[0]!
 }

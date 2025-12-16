@@ -1,13 +1,12 @@
 {
-  "extends": "@repo/typescript-config/base.json",
-
+  "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
-    "lib": ["ES2022"],
     "outDir": "dist",
     "rootDir": "src",
+    "baseUrl": ".",
+    "paths": {},
     "composite": true
   },
-
   "include": ["src"],
   "references": []
 }
