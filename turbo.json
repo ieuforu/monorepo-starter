@@ -7,7 +7,7 @@
       "outputs": ["dist/**", ".next/**", "!.next/cache/**", ".tsbuildinfo"]
     },
     "dev": {
-      "dependsOn": ["^db:generate"],
+      "dependsOn": ["^build"],
       "persistent": true,
       "cache": false
     },

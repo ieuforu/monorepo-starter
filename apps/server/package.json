@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@hono/zod-validator": "^0.7.5",
+    "@repo/db": "workspace:*",
     "@repo/utils": "workspace:*",
+    "@repo/validators": "workspace:*",
     "hono": "^4.10.8"
   },
   "devDependencies": {

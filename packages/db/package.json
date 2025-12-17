@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "tsdown --entry src/index.ts",
-    "dev": "tsdown --entry src/index.ts --watch",
+    "dev": "pnpm build && tsdown --entry src/index.ts --watch",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",

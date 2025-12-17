@@ -41,9 +41,15 @@ importers:
       '@hono/zod-validator':
         specifier: ^0.7.5
         version: 0.7.5(hono@4.11.1)(zod@3.25.76)
+      '@repo/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@repo/utils':
         specifier: workspace:*
         version: link:../../packages/utils
+      '@repo/validators':
+        specifier: workspace:*
+        version: link:../../packages/validators
       hono:
         specifier: ^4.10.8
         version: 4.11.1
@@ -63,6 +69,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@repo/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@repo/tailwind-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
@@ -72,6 +81,9 @@ importers:
       '@repo/utils':
         specifier: workspace:*
         version: link:../../packages/utils
+      '@repo/validators':
+        specifier: workspace:*
+        version: link:../../packages/validators
       next:
         specifier: ^16.0.10
         version: 16.0.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
