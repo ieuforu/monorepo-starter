@@ -1,11 +1,26 @@
 {
-  "extends": "../../packages/typescript-config/base.json",
+  "extends": "@repo/typescript-config/base.json",
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "types": ["bun"]
+    "types": ["bun"],
+    "baseUrl": ".",
+    "paths": {
+      "@repo/db": ["../../packages/db/src/index.ts"],
+      "@repo/api": ["../../packages/api/src/index.ts"],
+      "@repo/auth": ["../../packages/auth/src/index.ts"],
+      "@repo/utils": ["../../packages/utils/src/index.ts"],
+      "@repo/validators": ["../../packages/validators/src/index.ts"]
+    }
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist"],
+  "references": [
+    { "path": "../../packages/db" },
+    { "path": "../../packages/api" },
+    { "path": "../../packages/auth" },
+    { "path": "../../packages/utils" },
+    { "path": "../../packages/validators" }
+  ]
 }

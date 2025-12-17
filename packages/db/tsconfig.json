@@ -1,6 +1,5 @@
 {
   "extends": "@repo/typescript-config/base.json",
-
   "compilerOptions": {
     "lib": ["ES2022"],
     "outDir": "dist",
@@ -8,12 +7,6 @@
     "baseUrl": ".",
     "composite": true
   },
-
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"],
-
-  "references": [
-    // 如果 db 依赖于 @repo/validators
-    // { "path": "../validators" }
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

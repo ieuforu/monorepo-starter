@@ -1,3 +1,4 @@
-import { drizzle } from 'drizzle-orm/mysql2'
+export * from './schema/users'
+export * from './schema/posts'
 
-export const db = drizzle(process.env.DATABASE_URL!)
+export { db } from './client'

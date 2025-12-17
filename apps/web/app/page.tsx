@@ -6,7 +6,7 @@ import React from 'react'
 export default function Home() {
   const [exampleData, setExampleData] = React.useState<any>(null)
   const handleRequest = async () => {
-    const res = await fetch('/api/example')
+    const res = await fetch('/api/demo/users')
     const data = await res.json()
     setExampleData(data)
   }
@@ -31,7 +31,7 @@ export default function Home() {
           className="mt-4 rounded-md bg-accent px-4 py-2 text-accent-foreground"
           onClick={handleRequest}
         >
-          调用 /api/example
+          调用 /api/demo/users
         </Button>
       </div>
     </main>

@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "417266d8-fc6d-4f34-b0e9-084b1b30dae9",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "f95c2c86-cc98-4673-8dcb-f9095db005e6",
+  "prevId": "417266d8-fc6d-4f34-b0e9-084b1b30dae9",
   "tables": {
     "users": {
       "name": "users",
@@ -49,6 +49,13 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": true
+        },
+        "content": {
+          "name": "content",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
         }
       },
       "indexes": {},
