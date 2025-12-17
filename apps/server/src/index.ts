@@ -2,12 +2,6 @@ import { Hono } from 'hono'
 import { formatDate } from '@repo/utils'
 import { db, posts } from '@repo/db'
 import { users } from '@repo/db'
-import * as dotenv from 'dotenv'
-import * as path from 'path'
-
-dotenv.config({
-  path: path.resolve(__dirname, '../../.env'),
-})
 
 const app = new Hono()
 
