@@ -2,6 +2,8 @@ import { Hono } from 'hono'
 import { formatDate } from '@repo/utils'
 import { db, posts } from '@repo/db'
 import { users } from '@repo/db'
+import { insertUserSchema } from '@repo/validators'
+import { zValidator } from '@hono/zod-validator'
 
 const app = new Hono()
 
@@ -25,6 +27,17 @@ app.get('test/users', async (c) => {
 
 app.get('/test/posts', async (c) => {
   const data = db.select().from(posts)
+})
+
+app.post('/users', zValidator('json', insertUserSchema), async (c) => {
+  const data = c.req.valid('json')
+  console.log('✅ Server 收到数据:', data)
+
+  return c.json({
+    success: true,
+    message: 'Schema 自动同步测试成功！',
+    received: data,
+  })
 })
 
 export default {

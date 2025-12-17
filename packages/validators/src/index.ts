@@ -1,33 +1,16 @@
+import { createSelectSchema } from 'drizzle-zod'
+import { users } from '@repo/db'
 import { z } from 'zod'
+import type { InferSelectModel } from 'drizzle-orm'
 
-// User
-export const userSchema = z.object({
-  id: z.string().uuid(),
-  email: z.string().email(),
-  name: z.string().min(1).max(100),
-  createdAt: z.coerce.date(),
+// 1. 运行时校验 (确保 Hono 不会报 "expected a Zod schema")
+export const userSchema = createSelectSchema(users)
+
+export const insertUserSchema = z.object({
+  fullName: z.string().min(2, '名字太短啦'),
+  age: z.number().min(0).max(150).optional(),
 })
 
-export type User = z.infer<typeof userSchema>
-
-// Login
-export const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
-})
-
-export type LoginInput = z.infer<typeof loginSchema>
-
-// API Response
-export const apiResponseSchema = <T extends z.ZodType>(dataSchema: T) =>
-  z.object({
-    success: z.boolean(),
-    data: dataSchema.optional(),
-    error: z.string().optional(),
-  })
-
-export type ApiResponse<T> = {
-  success: boolean
-  data?: T
-  error?: string
-}
+// 2. 静态类型推导 (直接从数据库表结构拿类型，100% 准确且不报 TS 错误)
+export type User = InferSelectModel<typeof users>
+export type InsertUser = z.infer<typeof insertUserSchema>

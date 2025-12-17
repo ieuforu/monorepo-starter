@@ -1,32 +1,26 @@
 {
   "name": "@repo/auth",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
+  "type": "module",
   "sideEffects": false,
-  "types": "./dist/index.d.ts",
-  "module": "./dist/index.js",
+  "types": "./dist/index.d.mts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
     }
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm && tsc --emitDeclarationOnly",
-    "dev": "tsup src/index.ts --format esm --watch",
-    "lint": "eslint . --max-warnings 0"
-  },
-  "dependencies": {
-    "@auth/core": "^0.37.2",
-    "next-auth": "^5.0.0-beta.25"
+    "build": "tsdown --entry src/index.ts",
+    "dev": "tsdown --entry src/index.ts --watch"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.18.0",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@auth/core": "^0.34.3",
+    "next-auth": "5.0.0-beta.25"
   }
 }

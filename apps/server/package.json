@@ -4,14 +4,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "bun run --hot --env-file=./.env src/index.ts",
+    "dev": "until bun run --hot --env-file=./.env src/index.ts; do echo '依赖项尚未就绪，1秒后重试...'; sleep 1; done",
     "build": "bun build src/index.ts --outdir dist --target bun",
     "start": "bun run dist/index.js",
     "lint": "eslint ."
   },
   "dependencies": {
-    "hono": "^4.10.8",
-    "@repo/utils": "workspace:*"
+    "@hono/zod-validator": "^0.7.5",
+    "@repo/utils": "workspace:*",
+    "hono": "^4.10.8"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
