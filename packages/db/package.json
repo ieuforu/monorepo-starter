@@ -7,12 +7,14 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.mts",
-      "import": "./dist/index.mjs"
+      "development": "./src/index.ts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
     }
   },
   "scripts": {
     "build": "tsdown --entry src/index.ts",
-    "dev": "pnpm build && tsdown --entry src/index.ts --watch",
+    "dev": "exit 0",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",

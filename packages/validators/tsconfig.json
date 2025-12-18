@@ -5,9 +5,13 @@
     "lib": ["ES2022"],
     "outDir": "dist",
     "rootDir": "src",
-    "composite": true
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@repo/db": ["../db/src/index.ts"]
+    }
   },
 
   "include": ["src"],
-  "references": []
+  "references": [{ "path": "../db" }]
 }

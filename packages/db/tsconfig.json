@@ -5,7 +5,10 @@
     "outDir": "dist",
     "rootDir": "src",
     "baseUrl": ".",
-    "composite": true
+    "composite": true,
+    "paths": {
+      "@repo/db": ["./src/index.ts"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]

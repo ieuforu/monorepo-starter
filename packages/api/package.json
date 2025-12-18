@@ -6,16 +6,18 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.mts",
+      "development": "./src/index.ts",
       "import": "./dist/index.mjs"
     },
     "./root": {
       "types": "./dist/root.d.mts",
+      "development": "./src/root.ts",
       "import": "./dist/root.mjs"
     }
   },
   "scripts": {
     "build": "tsdown --entry src/index.ts --entry src/root.ts",
-    "dev": "tsdown --entry src/index.ts --entry src/root.ts --watch"
+    "dev": "exit 0"
   },
   "devDependencies": {
     "tsdown": "^0.18.0"

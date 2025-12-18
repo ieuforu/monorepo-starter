@@ -7,20 +7,13 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.mts",
-      "import": "./dist/index.mjs"
+      "development": "./src/index.ts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
     }
   },
   "scripts": {
     "build": "tsdown --entry src/index.ts",
-    "dev": "tsdown --entry src/index.ts --watch"
-  },
-  "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
-    "tsdown": "^0.18.0",
-    "typescript": "^5.9.3"
-  },
-  "dependencies": {
-    "@auth/core": "^0.34.3",
-    "next-auth": "5.0.0-beta.25"
+    "dev": "exit 0"
   }
 }

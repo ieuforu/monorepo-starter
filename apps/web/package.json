@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "node ../../scripts/wait-for.mjs next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ."
