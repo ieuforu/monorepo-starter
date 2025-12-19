@@ -8,8 +8,17 @@
     ".": {
       "types": "./dist/index.d.mts",
       "development": "./src/index.ts",
-      "import": "./dist/index.mjs",
       "default": "./dist/index.mjs"
+    },
+    "./client": {
+      "types": "./dist/client.d.mts",
+      "development": "./src/client.ts",
+      "default": "./dist/client.mjs"
+    },
+    "./schema": {
+      "types": "./dist/schema/index.d.mts",
+      "development": "./src/schema/index.ts",
+      "default": "./dist/schema/index.mjs"
     }
   },
   "scripts": {

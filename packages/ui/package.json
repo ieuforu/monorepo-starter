@@ -8,9 +8,10 @@
   "types": "./dist/index.d.mts",
   "exports": {
     ".": {
-      "types": "./src/index.tsx",
-      "import": "./src/index.tsx",
-      "default": "./src/index.tsx"
+      "types": "./dist/index.d.mts",
+      "development": "./src/index.tsx",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
     }
   },
   "scripts": {
