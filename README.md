@@ -1,55 +1,94 @@
 # Next-Gen Fullstack Monorepo
 
-这是一个基于 Bun + Turborepo + Rust 工具链 构建的工业级全栈 Monorepo 模板。追求极致的构建速度与全链路类型安全。
+An industrial-grade, high-performance Fullstack Monorepo boilerplate powered by Bun, Turborepo, and a Rust-driven
+toolchain. Engineered for sub-millisecond feedback loops and end-to-end type safety.
 
-# Tech Stack
+## 🚀 Tech Stack
 
-- 运行时 (Runtime): Bun - 毫秒级启动，原生支持 TypeScript 和环境变量。
+Runtime & Orchestration
 
-- 构建引擎: Turborepo 2 - 智能任务编排，极致的本地与远程缓存。
+- Runtime: Bun – Sub-millisecond startup, native TypeScript execution, and built-in environment variable management.
 
-- 底层工具链 (Rust Driven):
-  - Bundler: tsdown (基于 Rolldown/Oxc) - 替代传统的 tsup/esbuild，享受 Rust 级别的打包性能。
+- Orchestration: Turborepo 2 – Intelligent task scheduling with aggressive local and remote caching.
 
-  - Frontend: Next.js 15 (Turbopack) & Tailwind CSS 4
+Rust-Driven Toolchain
 
-- 后端架构:
-  - API: Hono - 部署在 Bun 上的超轻量 Web 标准框架。
+- Linting: Oxlint – A high-performance Linter built in Rust, up to 100x faster than ESLint.
 
-  - ORM: Drizzle - 全类型安全，支持 SQLite/PostgreSQL/MySQL。
+- Bundling: tsdown (Powered by Rolldown/Oxc) – The next-generation bundler for shared packages, offering Rust-level
+  build
+  speeds.
 
-  - 类型同步: 跨包引用自动感知，支持 .d.mts 实时构建。
+- Frontend Engine: Next.js 15+ with Turbopack – Optimized for instant HMR.
 
-# Project structure
+- Styling: Tailwind CSS 4 – Zero-runtime CSS engine.
+
+Backend & Data Layer
+
+- API Framework: Hono – Lightweight, Web-standard framework running on Bun.
+- ORM: Drizzle ORM – Headless, type-safe ORM with automated migrations.
+- Validation: Zod – Shared schemas across frontend, backend, and database layers.
+
+## 📂 Project Structure
 
 ```
 ├── apps/
-│   ├── web/           # Next.js 15 (Frontend)
-│   └── server/        # Hono (Backend API via Bun)
+│   ├── web/                # Next.js 15 (Frontend)
+│   └── server/             # Hono (Backend API via Bun)
 ├── packages/
-│   ├── api/           # 业务逻辑与 tRPC/Hono 定义
-│   ├── db/            # Drizzle Schema & Client
-│   ├── auth/          # Next-Auth 共享配置
-│   ├── ui/            # React 19 组件库 (tsup/tsdown)
-│   ├── validators/    # 共享 Zod 校验 Schema
-│   ├── tailwind-config/ # 全局 CSS/Tailwind 4 预设
-│   └── typescript-config/ # 严格模式 TS 配置基座
-└── turbo.json         # 拓扑任务流水线定义
+│   ├── api/                # Business logic & Route definitions
+│   ├── db/                 # Drizzle Schemas, Migrations & Client
+│   ├── auth/               # Shared Authentication (Next-Auth)
+│   ├── ui/                 # React 19 Component Library (tsdown)
+│   ├── validators/         # Universal Zod Validation Schemas
+│   ├── tailwind-config/    # Global CSS & Tailwind 4 Presets
+│   ├── typescript-config/  # Base TSConfig shared across workspace
+│   └── eslint-config/      # Modern Flat Config (ESLint + Oxlint integration)
+└── turbo.json              # Topological pipeline definitions
 ```
 
-# How to run?
+## 🛠️ Development Workflow
 
+```shell
+# Start full-stack development (Next.js + Hono + Database)
+pnpm dev
+
+# Trigger Full Turbo incremental build
+pnpm build
+
+# Millisecond-speed static analysis via Oxlint
+pnpm lint
+
+# Cross-package type safety check
+pnpm typecheck
+
+# Standardized code formatting
+pnpm format
 ```
-pnpm dev      # 启动全栈开发环境 (Next.js + Hono + Watchers)
-pnpm build    # 触发 Full Turbo 增量构建
-pnpm typecheck # 跨包类型安全性检查
-pnpm format   # 基于 Prettier 的自动化代码格式化
-```
 
-# 架构设计原则
+## 🏗️ Architectural Principles
 
-1. 单点事实来源: 所有的数据库 Schema、Zod 校验和类型定义均在 packages/ 下声明，并在 apps/ 中消费。
+1. Single Source of Truth (SSOT)
+   All Database Schemas, Zod Validators, and TypeScript definitions are declared once in packages/ and consumed
+   everywhere. A change in the database schema instantly propagates errors to the frontend if types mismatch.
+2. Rust-First Tooling
+   Legacy Node.js tools are replaced by Rust-based alternatives where possible. Linting 50+ files takes ~20ms via
+   Oxlint, and package bundling is handled by Rolldown, minimizing developer wait time.
+3. Seamless Source Mapping
+   Utilizes development exports in package.json to allow apps to consume shared packages directly from src. This
+   eliminates the need for manual build steps during local development.
+4. Zero-Config Environment
+   Native Bun integration ensures .env files are automatically loaded without third-party libraries, providing a unified
+   environment setup across the entire monorepo.
 
-2. 构建不感知: 开发者只需专注于业务逻辑，通过 tsdown 自动处理复杂的 Monorepo 类型引用映射。
+## 基础设施检查清单
 
-3. 零冗余脚本: 移除所有手动 clean 命令，利用工具链自身的 Cache-Invalidation 机制。
+- 运行时: Bun (基于 Zig)
+
+- 代码扫描: Oxlint (基于 Rust)
+
+- 打包构建: tsdown/Rolldown (基于 Rust)
+
+- 前端编译: Turbopack (基于 Rust)
+
+- 类型安全: 全栈 Zod + Drizzle 闭环
