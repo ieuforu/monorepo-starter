@@ -13,6 +13,7 @@
     }
   },
   "scripts": {
-    "build": "tsdown --entry src/index.ts"
+    "build": "tsdown --entry src/index.ts",
+    "lint": "oxlint --deny correctness --deny perf --quiet"
   }
 }

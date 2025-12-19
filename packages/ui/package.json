@@ -14,7 +14,8 @@
     }
   },
   "scripts": {
-    "build": "tsdown"
+    "build": "tsdown",
+    "lint": "oxlint --deny correctness --deny perf --quiet"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

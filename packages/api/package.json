@@ -16,7 +16,8 @@
     }
   },
   "scripts": {
-    "build": "tsdown --entry src/index.ts --entry src/root.ts"
+    "build": "tsdown --entry src/index.ts --entry src/root.ts",
+    "lint": "oxlint --deny correctness --deny perf --quiet"
   },
   "devDependencies": {
     "tsdown": "^0.18.0"

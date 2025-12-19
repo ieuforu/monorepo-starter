@@ -1,18 +1,8 @@
 'use client'
 
 import React from 'react'
-import {
-  Button,
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-  Skeleton,
-  Separator,
-} from '@repo/ui'
+import { Button, Card, CardTitle, Skeleton, Separator } from '@repo/ui'
 // 注意：如果 User 类型里没有 fullName，这里暂时用 any 或者修改你的 validator
-import { type User } from '@repo/validators'
 
 export default function Home() {
   const [exampleData, setExampleData] = React.useState<any[] | null>(null)

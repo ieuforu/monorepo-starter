@@ -27,6 +27,7 @@ app.get('test/users', async (c) => {
 
 app.get('/test/posts', async (c) => {
   const data = db.select().from(posts)
+  return c.json(data)
 })
 
 app.post('/users', zValidator('json', insertUserSchema), async (c) => {

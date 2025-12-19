@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "oxlint --deny correctness --deny perf --quiet"
   },
   "dependencies": {
     "@repo/db": "workspace:*",
