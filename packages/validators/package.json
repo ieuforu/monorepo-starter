@@ -14,8 +14,7 @@
     }
   },
   "scripts": {
-    "build": "tsdown --entry src/index.ts --dts-eager --external @repo/db",
-    "dev": "exit 0"
+    "build": "tsdown --entry src/index.ts --dts-eager --external @repo/db"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.1",

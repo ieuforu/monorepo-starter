@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "until bun run --hot --env-file=./.env src/index.ts; do echo '依赖项尚未就绪，1秒后重试...'; sleep 1; done",
+    "dev": "bun run --hot --env-file=./.env src/index.ts",
     "build": "bun build src/index.ts --outdir dist --target bun",
     "start": "bun run dist/index.js",
     "lint": "eslint ."

@@ -16,8 +16,7 @@
     }
   },
   "scripts": {
-    "build": "tsdown --entry src/index.ts --entry src/root.ts",
-    "dev": "exit 0"
+    "build": "tsdown --entry src/index.ts --entry src/root.ts"
   },
   "devDependencies": {
     "tsdown": "^0.18.0"

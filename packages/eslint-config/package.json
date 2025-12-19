@@ -3,8 +3,5 @@
   "exports": {
     "./base": "./base.js",
     "./next": "./next.js"
-  },
-  "scripts": {
-    "dev": "exit 0"
   }
 }

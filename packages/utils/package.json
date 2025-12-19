@@ -14,7 +14,6 @@
     }
   },
   "scripts": {
-    "build": "tsdown --entry src/index.ts",
-    "dev": "exit 0"
+    "build": "tsdown --entry src/index.ts"
   }
 }
