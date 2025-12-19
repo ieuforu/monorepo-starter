@@ -7,6 +7,8 @@ import { zValidator } from '@hono/zod-validator'
 
 const app = new Hono()
 
+console.log(process.env.DATABASE_URL)
+
 app.use('*', async (c, next) => {
   console.log(`[${c.req.method}] ${c.req.url}`)
   await next()
