@@ -8,18 +8,12 @@ importers:
 
   .:
     devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:packages/eslint-config
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:packages/typescript-config
       '@types/node':
         specifier: ^25.0.3
         version: 25.0.3
-      eslint:
-        specifier: ^9.16.0
-        version: 9.39.2(jiti@2.6.1)
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -57,9 +51,6 @@ importers:
         specifier: ^4.10.8
         version: 4.11.1
     devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../../packages/eslint-config
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
@@ -100,9 +91,6 @@ importers:
       '@next/eslint-plugin-next':
         specifier: ^16.0.8
         version: 16.0.10
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../../packages/eslint-config
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
@@ -161,8 +149,6 @@ importers:
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
-
-  packages/eslint-config: {}
 
   packages/tailwind-config:
     dependencies:
