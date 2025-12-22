@@ -12,7 +12,8 @@
     },
     "lint": {
       "dependsOn": [],
-      "cache": true
+      "cache": true,
+      "inputs": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.css", "biome.json"]
     },
     "typecheck": {
       "dependsOn": ["^build"],

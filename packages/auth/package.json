@@ -14,6 +14,6 @@
   },
   "scripts": {
     "build": "tsdown --entry src/index.ts",
-    "lint": "oxlint . --quiet"
+    "lint": "turbo lint --filter=@repo/auth"
   }
 }

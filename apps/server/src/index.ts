@@ -1,9 +1,8 @@
-import { Hono } from 'hono'
-import { formatDate } from '@repo/utils'
-import { db, posts } from '@repo/db'
-import { users } from '@repo/db'
-import { insertUserSchema } from '@repo/validators'
 import { zValidator } from '@hono/zod-validator'
+import { db, posts, users } from '@repo/db'
+import { formatDate } from '@repo/utils'
+import { insertUserSchema } from '@repo/validators'
+import { Hono } from 'hono'
 
 const app = new Hono()
 

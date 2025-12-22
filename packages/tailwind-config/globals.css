@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme inline {
   /* v4 直接定义颜色名 */

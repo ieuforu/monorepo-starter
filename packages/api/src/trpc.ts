@@ -1,6 +1,6 @@
-import { initTRPC, TRPCError } from '@trpc/server'
 import { auth } from '@repo/auth'
 import { db } from '@repo/db'
+import { initTRPC, TRPCError } from '@trpc/server'
 
 export interface TRPCContext {
   db: typeof db

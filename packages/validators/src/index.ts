@@ -1,7 +1,7 @@
-import { createSelectSchema } from 'drizzle-zod'
 import { users } from '@repo/db'
-import { z } from 'zod'
 import type { InferSelectModel } from 'drizzle-orm'
+import { createSelectSchema } from 'drizzle-zod'
+import { z } from 'zod'
 
 // 1. 运行时校验 (确保 Hono 不会报 "expected a Zod schema")
 export const userSchema = createSelectSchema(users)

@@ -1,7 +1,7 @@
 'use client'
 
+import { Button, Card, CardTitle, Separator, Skeleton } from '@repo/ui'
 import React from 'react'
-import { Button, Card, CardTitle, Skeleton, Separator } from '@repo/ui'
 // 注意：如果 User 类型里没有 fullName，这里暂时用 any 或者修改你的 validator
 
 export default function Home() {

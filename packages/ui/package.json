@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "tsdown",
-    "lint": "oxlint . --quiet"
+    "lint": "turbo lint --filter=@repo/ui"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

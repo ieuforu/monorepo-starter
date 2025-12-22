@@ -1,7 +1,8 @@
-import { users } from './schema/users'
 import { posts } from './schema/posts'
-export * from './schema/users'
+import { users } from './schema/users'
+
 export * from './schema/posts'
+export * from './schema/users'
 
 export { users, posts }
 
