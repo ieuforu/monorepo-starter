@@ -6,7 +6,11 @@
     "outDir": "dist",
     "rootDir": "src",
     "baseUrl": ".",
-    "composite": true
+    "composite": true,
+    "paths": {
+      "@repo/db": ["../db/src/index.ts"],
+      "@repo/auth": ["../auth/src/index.ts"]
+    }
   },
 
   "include": ["src"],

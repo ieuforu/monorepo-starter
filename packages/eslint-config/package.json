@@ -1,7 +1,0 @@
-{
-  "name": "@repo/eslint-config",
-  "exports": {
-    "./base": "./base.js",
-    "./next": "./next.js"
-  }
-}

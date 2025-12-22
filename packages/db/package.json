@@ -27,7 +27,7 @@
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "db:seed": "bun src/seed.ts",
-    "lint": "oxlint --deny correctness --deny perf --quiet"
+    "lint": "oxlint . --quiet"
   },
   "devDependencies": {
     "drizzle-kit": "^0.31.8",

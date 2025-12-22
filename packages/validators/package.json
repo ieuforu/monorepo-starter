@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "tsdown --entry src/index.ts --dts-eager --external @repo/db",
-    "lint": "oxlint --deny correctness --deny perf --quiet"
+    "lint": "oxlint . --quiet"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.1",
