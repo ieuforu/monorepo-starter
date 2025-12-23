@@ -4,7 +4,10 @@
     "outDir": "dist",
     "rootDir": "src",
     "baseUrl": ".",
-    "paths": {},
+    "paths": {
+      "src/*": ["./src/*"],
+      "@/*": ["./src/*"]
+    },
     "composite": true
   },
   "include": ["src"],

@@ -1,0 +1,14 @@
+{
+  "name": "@repo/tsdown-config",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./base.ts",
+  "types": "./base.ts",
+  "exports": {
+    ".": "./base.ts"
+  },
+  "devDependencies": {
+    "tsdown": "^0.18.2"
+  }
+}

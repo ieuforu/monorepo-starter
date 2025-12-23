@@ -1,6 +1,5 @@
 import { definePackageConfig } from '@repo/tsdown-config'
 
 export default definePackageConfig({
-  entry: ['./src/index.tsx'],
-  external: ['react', 'react-dom', 'react/jsx-runtime'],
+  entry: ['./src/index.ts'],
 })

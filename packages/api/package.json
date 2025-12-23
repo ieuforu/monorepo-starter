@@ -20,7 +20,8 @@
     "lint": "turbo lint --filter=@repo/api"
   },
   "devDependencies": {
-    "tsdown": "^0.18.0"
+    "@repo/tsdown-config": "workspace:*",
+    "tsdown": "^0.18.2"
   },
   "dependencies": {
     "@trpc/server": "^11.8.1"

@@ -7,7 +7,7 @@
       "outputs": ["dist/**", ".next/**", "!.next/cache/**", ".tsbuildinfo"]
     },
     "dev": {
-      "persistent": false,
+      "persistent": true,
       "cache": false
     },
     "lint": {

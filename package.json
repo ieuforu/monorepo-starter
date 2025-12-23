@@ -12,7 +12,11 @@
     "lint": "oxlint --deny correctness --deny perf --quiet && biome check",
     "lint:fix": "oxlint --fix && biome check --write --unsafe --no-errors-on-unmatched",
     "format": "biome format --write .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test",
+    "clean": "turbo clean && rm -rf node_modules .turbo",
+    "clean:workspaces": "turbo clean"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.10",

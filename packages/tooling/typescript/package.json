@@ -1,0 +1,10 @@
+{
+  "name": "@repo/typescript-config",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@repo/tsdown-config": "workspace:*",
+    "tsdown": "^0.18.2"
+  }
+}
