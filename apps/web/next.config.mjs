@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 这是解决 monorepo 模块找不到的核心配置之一
   transpilePackages: [
     '@repo/api',
     '@repo/auth',
@@ -9,5 +8,10 @@ const nextConfig = {
     '@repo/utils',
     '@repo/validators',
   ],
+  compiler:{
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error'],
+    } : false,
+  }
 }
 export default nextConfig
