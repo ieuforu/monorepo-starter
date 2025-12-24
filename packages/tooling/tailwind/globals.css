@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* v4 直接定义颜色名 */
   --color-primary: #0f172a;
   --color-primary-foreground: #ffffff;
   --color-secondary: #f1f5f9;
@@ -15,15 +14,12 @@
   --color-border: #e2e8f0;
   --color-background: #ffffff;
   --color-foreground: #0f172a;
-
-  /* 映射 shadcn 习惯使用的变量名 (重要：许多 shadcn 组件内部逻辑依赖这些) */
   --radius: 0.5rem;
 }
 
-/* 补充 base 样式，确保 shadcn 的 border 等类名生效 */
 @layer base {
   * {
-    @apply border-border; /* v4 中如果你定义了 --color-border，这里可以直接用 */
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground;

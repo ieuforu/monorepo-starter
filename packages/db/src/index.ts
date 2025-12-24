@@ -6,7 +6,6 @@ export * from './schema/users'
 
 export { users, posts }
 
-// 显式导出 Table 类型
 export type UsersTable = typeof users
 export type PostsTable = typeof posts
 

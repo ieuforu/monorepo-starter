@@ -8,10 +8,13 @@ const nextConfig = {
     '@repo/utils',
     '@repo/validators',
   ],
-  compiler:{
-    removeConsole: process.env.NODE_ENV === 'production' ? {
-      exclude: ['error'],
-    } : false,
-  }
+  compiler: {
+    removeConsole:
+      process.env.NODE_ENV === 'production'
+        ? {
+            exclude: ['error'],
+          }
+        : false,
+  },
 }
 export default nextConfig

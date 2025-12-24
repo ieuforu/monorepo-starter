@@ -1,17 +1,11 @@
-// apps/web/tsconfig.json (关键修复)
 {
   "extends": "@repo/typescript-config/next.json",
 
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      // 应用程序内部别名
-      // "@/components/*": ["./components/*"],
-
-      // Monorepo 共享包别名：精确指向每个包的入口
       "@repo/ui": ["../../packages/ui/src/index.tsx"],
       "@repo/db": ["../../packages/db/src/index.ts"],
-      // 针对 auth 包，指向我们刚刚修复的入口文件
       "@repo/auth": ["../../packages/auth/src/index.ts"],
       "@repo/api": ["../../packages/api/src/index.ts"],
       "@repo/utils": ["../../packages/utils/src/index.ts"],
@@ -24,7 +18,6 @@
   "exclude": ["node_modules"],
 
   "references": [
-    // 保持引用不变
     { "path": "../../packages/ui" },
     { "path": "../../packages/db" },
     { "path": "../../packages/api" },

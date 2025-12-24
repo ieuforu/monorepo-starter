@@ -28,6 +28,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Lint
+        run: pnpm lint
+        
+      - name: Type Check
+        run: pnpm typecheck
+
       - name: Turbo Build (with Cache)
         run: pnpm build
         env:
