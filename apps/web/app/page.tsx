@@ -1,19 +1,30 @@
 'use client'
 
-import { Button, Card, CardTitle, Separator, Skeleton } from '@repo/ui'
+import type { InferResponseType } from '@repo/server'
+import { Button, Card, CardTitle, Separator, Skeleton, toast } from '@repo/ui'
 import React from 'react'
-// 注意：如果 User 类型里没有 fullName，这里暂时用 any 或者修改你的 validator
+import { client } from '@/lib/api'
+
+type UsersResponse = InferResponseType<typeof client.test.users.$get>
 
 export default function Home() {
-  const [exampleData, setExampleData] = React.useState<any[] | null>(null)
+  const [exampleData, setExampleData] = React.useState<UsersResponse | null>(null)
   const [loading, setLoading] = React.useState(false)
 
   const handleRequest = async () => {
     setLoading(true)
     try {
-      const res = await fetch('/api/demo/users')
+      const res = await client.test.users.$get()
+      if (!res.ok) {
+        toast.error('请求失败，请稍后重试。')
+        throw new Error(`HTTP error! status: ${res.status}`)
+      }
       const data = await res.json()
+      toast.success('请求成功！数据已同步。')
       setExampleData(data)
+    } catch (error) {
+      toast.error('请求失败，请稍后重试。')
+      console.error('❌ 请求失败:', error)
     } finally {
       setLoading(false)
     }
@@ -22,7 +33,6 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white dark:bg-zinc-950 px-6 py-12 text-zinc-900 dark:text-zinc-50">
       <div className="mx-auto max-w-5xl">
-        {/* Header: 极简主义设计 */}
         <header className="mb-16 flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="space-y-2">
             <h1 className="text-5xl font-black tracking-tighter uppercase italic">
@@ -48,7 +58,7 @@ export default function Home() {
             ))}
           </div>
         ) : exampleData ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-zinc-200 border border-zinc-200 dark:bg-zinc-800 dark:border-zinc-800">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-zinc-200 border border-zinc-200 dark:bg-zinc-800 dark:border-zinc-800">
             {exampleData.map((user) => (
               <Card
                 key={user.id}
@@ -65,7 +75,7 @@ export default function Home() {
                   </div>
                   <div className="h-8 w-8 bg-zinc-900 dark:bg-zinc-50 flex items-center justify-center">
                     <span className="text-white dark:text-zinc-900 font-bold text-xs">
-                      {user.fullName.charAt(0)}
+                      {user.fullName?.charAt(0) ?? '?'}
                     </span>
                   </div>
                 </div>
@@ -75,8 +85,8 @@ export default function Home() {
                 <div className="flex items-center justify-between font-mono text-xs">
                   <div className="flex flex-col">
                     <span className="text-zinc-400 uppercase">Metric Value</span>
-                    <span className={user.age > 0 ? 'text-blue-600' : 'text-red-600'}>
-                      {user.age.toLocaleString()}
+                    <span className={(user.age ?? 0) > 0 ? 'text-blue-600' : 'text-red-600'}>
+                      {user.age?.toLocaleString() ?? 'N/A'}
                     </span>
                   </div>
                   <Button
@@ -90,7 +100,6 @@ export default function Home() {
             ))}
           </div>
         ) : (
-          /* Empty State */
           <div className="border-4 border-double border-zinc-200 p-20 text-center dark:border-zinc-800">
             <p className="font-mono text-zinc-400 animate-pulse">SYSTEM_IDLE: AWAITING_COMMAND</p>
           </div>

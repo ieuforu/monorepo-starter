@@ -24,6 +24,7 @@
     "tsdown": "^0.18.2"
   },
   "dependencies": {
-    "@trpc/server": "^11.8.1"
+    "@trpc/server": "^11.8.1",
+    "hono": "^4.11.1"
   }
 }
