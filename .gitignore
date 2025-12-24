@@ -9,3 +9,4 @@ build
 .env.local
 .vscode
 .idea
+*.tsbuildinfo
