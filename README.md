@@ -72,4 +72,12 @@ pnpm typecheck
 
 5. Zero-Config Environment Native Bun integration ensures .env files are automatically loaded without third-party libraries, providing a unified environment setup across the entire monorepo.
 
+## 📜 Architecture Decision Records (ADR)
+
+This project maintains a set of ADRs to document the strategic technical decisions and their underlying rationales. These records provide a deep dive into the engineering philosophy behind the boilerplate.
+
+- [ADR 001: Replacing ESLint with Oxlint for Performance](./docs/adr/001-use-oxlint.md)
+- [ADR 002: End-to-End Type Safety via Drizzle-Zod SSOT](./docs/adr/002-drizzle-zod-ssot.md)
+- [ADR 003: Monorepo Source Redirect for Seamless DX](./docs/adr/003-source-redirect-mode.md)
+
 # Built with  by the Rust Toolchain Revolution.
