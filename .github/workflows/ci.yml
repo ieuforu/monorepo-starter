@@ -9,6 +9,8 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: mysql://root:password@localhost:3306/test
     steps:
       - uses: actions/checkout@v4
 
@@ -17,8 +19,6 @@ jobs:
           bun-version: latest
 
       - uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - uses: actions/setup-node@v4
         with:
