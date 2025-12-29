@@ -14,6 +14,7 @@
     "@repo/db": "workspace:*",
     "@repo/utils": "workspace:*",
     "@repo/validators": "workspace:*",
+    "drizzle-orm": "^0.45.1",
     "hono": "^4.10.8"
   },
   "devDependencies": {

@@ -2,6 +2,7 @@ import { zValidator } from '@hono/zod-validator'
 import { db, posts, users } from '@repo/db'
 import { formatDate } from '@repo/utils'
 import { insertUserSchema } from '@repo/validators'
+import { eq } from 'drizzle-orm'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 
@@ -41,13 +42,23 @@ const routes = app
 
   .post('/users', zValidator('json', insertUserSchema), async (c) => {
     const data = c.req.valid('json')
-    console.log('✅ Server 收到数据:', data)
 
-    return c.json({
-      success: true,
-      message: 'Schema 自动同步测试成功！',
-      received: data,
-    })
+    try {
+      const [result] = await db.insert(users).values(data)
+
+      const newId = result.insertId
+
+      const [insertedUser] = await db.select().from(users).where(eq(users.id, newId)).limit(1)
+
+      return c.json({
+        success: true,
+        message: 'Data saved to MySQL',
+        data: insertedUser,
+      })
+    } catch (error) {
+      console.error('❌ Database Error:', error)
+      return c.json({ success: false, message: 'Insert failed' }, 500)
+    }
   })
 
 export type AppType = typeof routes

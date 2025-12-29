@@ -1,7 +1,7 @@
 'use client'
 
 import type { InferResponseType } from '@repo/server'
-import { Button, Card, CardTitle, Separator, Skeleton, toast } from '@repo/ui'
+import { Button, Card, CardTitle, Input, Separator, Skeleton, toast } from '@repo/ui'
 import React from 'react'
 import { client } from '@/lib/api'
 
@@ -10,6 +10,8 @@ type UsersResponse = InferResponseType<typeof client.test.users.$get>
 export default function Home() {
   const [exampleData, setExampleData] = React.useState<UsersResponse | null>(null)
   const [loading, setLoading] = React.useState(false)
+
+  const [newUserName, setNewUserName] = React.useState('')
 
   const handleRequest = async () => {
     setLoading(true)
@@ -25,6 +27,36 @@ export default function Home() {
     } catch (error) {
       toast.error('请求失败，请稍后重试。')
       console.error('❌ 请求失败:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handlePostRequest = async () => {
+    if (!newUserName) return toast.error('请输入内容')
+
+    setLoading(true)
+    try {
+      const res = await client.users.$post({
+        json: {
+          fullName: newUserName,
+          age: 18,
+        },
+      })
+
+      if (res.ok) {
+        const responseData = await res.json()
+
+        if (responseData.success && responseData.data) {
+          setExampleData((prev) => (prev ? [...prev, responseData.data!] : [responseData.data!]))
+
+          toast.success('EXECUTE_SUCCESS: 数据已本地同步')
+          setNewUserName('')
+        }
+      }
+    } catch (error) {
+      toast.error('执行失败')
+      console.error(error)
     } finally {
       setLoading(false)
     }
@@ -50,6 +82,26 @@ export default function Home() {
             {loading ? 'FETCHING...' : 'SYNC DATABASE'}
           </Button>
         </header>
+
+        <div className="mb-12 flex items-center gap-4">
+          <div className="relative flex-1">
+            <span className="absolute -top-2.5 left-3 bg-white px-2 font-mono text-[10px] font-bold text-zinc-400 uppercase dark:bg-zinc-950">
+              Command_Input
+            </span>
+            <Input
+              placeholder="ENTER_NEW_USER_NAME..."
+              value={newUserName}
+              onChange={(e) => setNewUserName(e.target.value)}
+              className="h-14 rounded-none border-2 border-zinc-900 bg-transparent font-mono focus-visible:ring-0 dark:border-zinc-50"
+            />
+          </div>
+          <Button
+            onClick={handlePostRequest}
+            className="h-14 px-8 rounded-none border-2 border-zinc-900 bg-zinc-900 font-bold dark:border-zinc-50 dark:bg-zinc-50 dark:text-zinc-900"
+          >
+            EXECUTE_POST
+          </Button>
+        </div>
 
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
