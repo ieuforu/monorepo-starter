@@ -1,5 +1,7 @@
 # Next-Gen Fullstack Monorepo
 
+[![CI Status](https://github.com/ieuforu/monorepo-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/ieuforu/monorepo-starter/actions)
+
 An industrial-grade, high-performance Fullstack Monorepo boilerplate powered by Bun, Turborepo, and a 100% Rust-driven toolchain. Engineered for sub-millisecond feedback loops and end-to-end type safety.
 
 ## 🚀 Tech Stack

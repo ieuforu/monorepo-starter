@@ -31,10 +31,8 @@ jobs:
       - name: Lint
         run: pnpm lint
         
-      - name: Type Check
-        run: pnpm typecheck
-
-      - name: Turbo Build (with Cache)
-        run: pnpm build
+      - name: Type Check & Build
+        run: pnpm turbo typecheck build
         env:
           NODE_ENV: production
+          NODE_OPTIONS: "--import tsx"
