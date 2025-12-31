@@ -69,9 +69,6 @@ importers:
 
   apps/web:
     dependencies:
-      '@repo/db':
-        specifier: workspace:*
-        version: link:../../packages/db
       '@repo/tailwind-config':
         specifier: workspace:*
         version: link:../../packages/tooling/tailwind

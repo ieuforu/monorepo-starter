@@ -10,7 +10,6 @@
     "lint": "oxlint --deny correctness --deny perf --quiet"
   },
   "dependencies": {
-    "@repo/db": "workspace:*",
     "@repo/tailwind-config": "workspace:*",
     "@repo/ui": "workspace:*",
     "@repo/utils": "workspace:*",
