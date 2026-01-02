@@ -24,7 +24,7 @@
     "tsdown": "catalog:"
   },
   "dependencies": {
-    "@trpc/server": "^11.8.1",
+    "@trpc/server": "catalog:",
     "hono": "catalog:"
   }
 }

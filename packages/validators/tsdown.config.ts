@@ -6,5 +6,5 @@ export default definePackageConfig({
     resolve: true,
     build: true
   },
-  external: ['@repo/db', 'drizzle-orm', 'drizzle-zod', 'zod'],
+  external: [/^@repo\/db/, 'drizzle-orm', 'drizzle-zod', 'zod'],
 })

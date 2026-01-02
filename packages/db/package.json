@@ -31,14 +31,14 @@
   },
   "devDependencies": {
     "@repo/tsdown-config": "workspace:*",
-    "drizzle-kit": "^0.31.8",
-    "drizzle-seed": "^0.3.1",
+    "drizzle-kit": "catalog:",
+    "drizzle-seed": "catalog:",
     "tsdown": "catalog:"
   },
   "dependencies": {
     "drizzle-orm": "catalog:",
-    "drizzle-zod": "^0.8.3",
-    "mysql2": "^3.16.0",
+    "drizzle-zod": "catalog:",
+    "mysql2": "catalog:",
     "zod": "catalog:"
   }
 }
