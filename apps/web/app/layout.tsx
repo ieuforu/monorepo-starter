@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { Toaster } from '@repo/ui'
+import { Providers } from '../components/providers'
 
 export const metadata: Metadata = {
   title: 'My Monorepo App',
@@ -11,8 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        {children}
-        <Toaster position="top-center" />
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

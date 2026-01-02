@@ -13,7 +13,7 @@
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": false,
     "skipLibCheck": true,
-    "noEmit": false,
+    "noEmit": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
@@ -22,7 +22,9 @@
     "declaration": true,
     "declarationMap": true,
     "composite": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "resolvePackageJsonExports": true,
+    "allowImportingTsExtensions": true
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "dist", ".turbo"]

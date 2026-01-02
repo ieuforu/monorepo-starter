@@ -9,20 +9,15 @@ import { cors } from 'hono/cors'
 const app = new Hono()
 
 console.log(process.env.DATABASE_URL)
+
+app.use('*', cors({ origin: 'http://localhost:3000' }))
+app.use('*', async (c, next) => {
+  console.log(`[${c.req.method}] ${c.req.url}`)
+  await next()
+  console.log(`Status: ${c.res.status}`)
+})
+
 const routes = app
-  .use(
-    '*',
-    cors({
-      origin: 'http://localhost:3000',
-      allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      allowHeaders: ['Content-Type', 'Authorization'],
-    }),
-  )
-  .use('*', async (c, next) => {
-    console.log(`[${c.req.method}] ${c.req.url}`)
-    await next()
-    console.log(`Status: ${c.res.status}`)
-  })
   .get('/', (c) => {
     return c.json({
       message: 'Hello from Hono API!',

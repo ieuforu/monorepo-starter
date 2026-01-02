@@ -33,13 +33,12 @@
     "@repo/tsdown-config": "workspace:*",
     "drizzle-kit": "^0.31.8",
     "drizzle-seed": "^0.3.1",
-    "tsdown": "^0.18.2",
-    "tsx": "^4.21.0"
+    "tsdown": "catalog:"
   },
   "dependencies": {
-    "drizzle-orm": "^0.45.1",
+    "drizzle-orm": "catalog:",
     "drizzle-zod": "^0.8.3",
     "mysql2": "^3.16.0",
-    "zod": "^4.2.1"
+    "zod": "catalog:"
   }
 }
