@@ -1,19 +1,19 @@
-# ADR 003: 采用 Monorepo 源码重定向 (Source Redirect) 模式
+# ADR 003: 采用基于 package.json exports 的源码重定向模式
 
 ## 状态
 已接受 (Accepted)
 
 ## 背景
-Monorepo 中的多包协作通常需要先将 `packages/*` 编译至 `dist` 目录，App 才能引用。这导致修改公共包代码后需要手动运行 Build，热更新（HMR）缓慢，极大地影响了开发体验。
+传统的 Monorepo 协作依赖 `tsconfig paths` 进行源码映射，但这并非 Node.js 标准协议，容易导致构建工具（如 Bun build）与 IDE（TS Server）解析逻辑不一致。
 
 ## 决策
-通过 `package.json` 的 `exports` 字段配置 `development` 条件，使应用在开发环境下直接指向 `src/index.ts(x)` 源码，并配合 Next.js 的 `transpilePackages` 配置进行实时编译。
+全面移除所有包及应用的 `tsconfig.json` 中的 `paths` 配置。利用 `package.json` 的 `exports` 字段定义 `development` 条件分支，指向 `src/index.ts`。
 
 ## 理由
-1. **极致 HMR 体验**：修改 UI 组件或工具函数后，前端页面秒级热更新，无需中间构建步骤。
-2. **调试友好**：浏览器控制台报错直接指向原始 TS 源码行数，而非混淆后的 `dist` 代码。
-3. **简化流程**：开发者不再需要开启多个 `watch` 进程，只需启动 App 的 `dev` 模式即可带动全局。
+1. **标准协议**：`exports` 是 Node.js 官方标准，被所有现代构建工具（Bun, Rolldown, Turbopack）原生支持。
+2. **零手动维护**：无需在每个 App 的 `tsconfig` 中手动维护冗长的路径列表。
+3. **IDE 性能**：减少 TypeScript 语言服务器的解析负担，提升大型 Monorepo 中的响应速度。
 
 ## 后果
-* **优点**：显著提升了本地开发效率，实现了类似于“Bundless”的协作体验。
-* **影响**：要求所有内部包遵循统一的入口规范（如 `src/index.ts`），且 App 层需要具备处理 Workspace 源码的编译能力（如 Turbopack 或 SWC）。
+* **优点**：实现了“真源码引用”，开发者修改 `packages/db` 的代码，`apps/web` 会通过标准的模块解析逻辑立即感知。
+* **影响**：要求各包的 `package.json` 必须严格声明 `exports`，且 App 需要配置 `moduleResolution: "bundler"` 以支持该特性。

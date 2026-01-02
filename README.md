@@ -4,25 +4,26 @@
 
 An industrial-grade, high-performance Fullstack Monorepo boilerplate powered by Bun, Turborepo, and a 100% Rust-driven toolchain. Engineered for sub-millisecond feedback loops and end-to-end type safety.
 
-## 🚀 Tech Stack
+## Tech Stack
 
 ### Runtime & Orchestration
 - **Runtime**: [Bun](https://bun.sh/) – Sub-millisecond startup, native TypeScript execution, and high-performance package management.
 - **Orchestration**: [Turborepo 2](https://turbo.build/) – Intelligent task scheduling with aggressive local/remote caching.
+- **Dependency Management**: **pnpm catalogs** – Unified version management across 11+ packages, ensuring zero version drift.
 
 ### Rust-Driven Toolchain
-- **Linting & Formatting**: [Biome](https://biomejs.dev/) – A unified, ultra-fast toolchain replacing ESLint and Prettier. Provides linting, formatting, and import organization in milliseconds.
-- **Deep Logic Analysis**: [Oxlint](https://oxc-project.github.io/) – A high-performance Linter built in Rust, focusing on correctness and performance, running up to 100x faster than ESLint.
-- **Bundling**: [tsdown](https://github.com/rolldown/tsdown) (Powered by Rolldown/Oxc) – The next-generation bundler for shared packages, offering Rust-level build speeds.
+- **Linting & Formatting**: [Biome](https://biomejs.dev/) – Unified, ultra-fast toolchain replacing ESLint and Prettier. ~10ms for full-project analysis.
+- **Deep Logic Analysis**: [Oxlint](https://oxc-project.github.io/) – High-performance Linter focusing on correctness, running 100x faster than ESLint.
+- **Bundling**: [tsdown](https://github.com/rolldown/tsdown) – Next-gen bundler for shared packages, offering Rust-level build speeds via Rolldown.
 - **Frontend Engine**: Next.js 15+ with **Turbopack** – Optimized for instant Hot Module Replacement (HMR).
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) – Zero-runtime CSS engine with native support for modern CSS features.
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) – Zero-runtime CSS engine with native modern CSS support.
 
 ### Backend & Data Layer
 - **API Framework**: [Hono](https://hono.dev/) – Lightweight, Web-standard framework optimized for Bun.
 - **ORM**: [Drizzle ORM](https://orm.drizzle.team/) – Headless, type-safe ORM with automated migrations.
 - **Validation**: [Zod](https://zod.dev/) – Shared schemas across frontend, backend, and database layers.
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 ├── apps/
@@ -39,7 +40,6 @@ An industrial-grade, high-performance Fullstack Monorepo boilerplate powered by 
 │   └── typescript-config/  # Base TSConfig shared across workspace
 └── turbo.json              # Topological pipeline definitions
 ```
-
 
 ## 🛠️ Development Workflow
 
@@ -63,23 +63,37 @@ pnpm format
 pnpm typecheck
 ```
 
-## 🏗️ Architectural Principles
-1. Single Source of Truth (SSOT) All Database Schemas, Zod Validators, and TypeScript definitions are declared once in packages/ and consumed everywhere. A change in the database schema instantly propagates errors to the frontend if types mismatch.
+## Database Operations 
 
-2. Rust-First Tooling Pipeline Legacy Node.js tools are replaced by Rust-based alternatives. Linting and formatting 90+ files takes ~10ms via Oxlint and Biome, minimizing developer wait time.
+```shell
+# Generate SQL migrations based on Schema changes
+pnpm db:generate
 
-3. Unified Code Quality Uses Biome for formatting and stylistic linting, combined with Oxlint for deep correctness checks. This duo ensures a cleaner codebase with zero configuration overhead between packages.
+# Push Schema changes to local database (Development)
+pnpm db:push
 
-4. Seamless Source Mapping Utilizes development exports in package.json to allow apps to consume shared packages directly from src. This eliminates the need for manual build steps during local development.
+# Run idempotent database seeding
+pnpm db:seed
 
-5. Zero-Config Environment Native Bun integration ensures .env files are automatically loaded without third-party libraries, providing a unified environment setup across the entire monorepo.
+# Launch Drizzle Studio
+pnpm db:studio
 
-## 📜 Architecture Decision Records (ADR)
+```
 
-This project maintains a set of ADRs to document the strategic technical decisions and their underlying rationales. These records provide a deep dive into the engineering philosophy behind the boilerplate.
+## Architectural Principles
+1. Single Source of Truth (SSOT): Database Schemas, Zod Validators, and TS definitions are declared in packages/ and consumed everywhere. A schema change instantly propagates errors to the frontend via the build pipeline.
 
+2. Topological Pipeline: Turborepo ensures strict task ordering. Modifying a DB schema automatically triggers db:generate before any dependent app build starts, keeping types always in sync.
+
+3. Standard-Based Source Redirect: Uses Node.js standard exports in package.json to route development imports to src/*.ts. This eliminates tsconfig paths pollution and ensures unified resolution across Bun, Turbopack, and Rolldown.
+
+4. Rust-First Tooling: Legacy Node.js tools are replaced by Rust-based alternatives (Biome, Oxlint, Rolldown). Static analysis for the entire codebase typically completes in under 20ms.
+
+5. Unified Code Quality: Biome handles formatting and style, while Oxlint ensures deep code correctness. This duo provides a zero-config, ultra-fast quality gate.
+
+## Architecture Decision Records (ADR)
 - [ADR 001: Replacing ESLint with Oxlint for Performance](./docs/adr/001-use-oxlint.md)
 - [ADR 002: End-to-End Type Safety via Drizzle-Zod SSOT](./docs/adr/002-drizzle-zod-ssot.md)
 - [ADR 003: Monorepo Source Redirect for Seamless DX](./docs/adr/003-source-redirect-mode.md)
 
-# Built with  by the Rust Toolchain Revolution.
+# Built with 🦀 by the Rust Toolchain Revolution.
