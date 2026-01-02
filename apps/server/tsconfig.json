@@ -5,24 +5,8 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "types": ["node", "bun"],
-    "baseUrl": ".",
-    "paths": {
-      "@repo/db": ["../../packages/db/src/index.ts"],
-      "@repo/api": ["../../packages/api/src/index.ts"],
-      "@repo/auth": ["../../packages/auth/src/index.ts"],
-      "@repo/utils": ["../../packages/utils/src/index.ts"],
-      "@repo/validators": ["../../packages/validators/src/index.ts"],
-      "@repo/server": ["../../apps/server/src/index.ts"]
-    }
+    "noEmit": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist"],
-  "references": [
-    { "path": "../../packages/db" },
-    { "path": "../../packages/api" },
-    { "path": "../../packages/auth" },
-    { "path": "../../packages/utils" },
-    { "path": "../../packages/validators" },
-    { "path": "../../apps/server" }
-  ]
+  "exclude": ["node_modules", "dist"]
 }
