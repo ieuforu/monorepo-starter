@@ -1,6 +1,5 @@
 import { zValidator } from '@hono/zod-validator'
-import { db, posts, users } from '@repo/db'
-import { formatDate } from '@repo/utils'
+import { db, users } from '@repo/db'
 import { insertUserSchema } from '@repo/validators'
 import { eq } from 'drizzle-orm'
 import { Hono } from 'hono'
@@ -17,44 +16,20 @@ app.use('*', async (c, next) => {
   console.log(`Status: ${c.res.status}`)
 })
 
-const routes = app
-  .get('/', (c) => {
-    return c.json({
-      message: 'Hello from Hono API!',
-      date: formatDate(new Date()),
-    })
-  })
-
-  .get('test/users', async (c) => {
-    const data = await db.select().from(users)
-    return c.json(data)
-  })
-
-  .get('/test/posts', async (c) => {
-    const data = db.select().from(posts)
-    return c.json(data)
-  })
-
-  .post('/users', zValidator('json', insertUserSchema), async (c) => {
-    const data = c.req.valid('json')
-
-    try {
-      const [result] = await db.insert(users).values(data)
-
-      const newId = result.insertId
-
-      const [insertedUser] = await db.select().from(users).where(eq(users.id, newId)).limit(1)
-
-      return c.json({
-        success: true,
-        message: 'Data saved to MySQL',
-        data: insertedUser,
-      })
-    } catch (error) {
-      console.error('❌ Database Error:', error)
-      return c.json({ success: false, message: 'Insert failed' }, 500)
-    }
-  })
+const routes = app.route(
+  '/users',
+  new Hono()
+    .get('/', async (c) => c.json(await db.select().from(users)))
+    .post('/', zValidator('json', insertUserSchema), async (c) => {
+      try {
+        const [res] = await db.insert(users).values(c.req.valid('json'))
+        const [user] = await db.select().from(users).where(eq(users.id, res.insertId)).limit(1)
+        return c.json({ success: true, data: user })
+      } catch (e) {
+        return c.json({ success: false, message: e }, 500)
+      }
+    }),
+)
 
 export type AppType = typeof routes
 export type { InferRequestType, InferResponseType } from 'hono'

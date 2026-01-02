@@ -22,7 +22,7 @@
     }
   },
   "scripts": {
-    "build": "tsdown --entry src/index.ts",
+    "build": "tsdown",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",

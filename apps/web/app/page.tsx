@@ -5,7 +5,7 @@ import { Button, Card, CardTitle, Input, Separator, Skeleton, toast } from '@rep
 import React from 'react'
 import { client } from '@/lib/api'
 
-type UsersResponse = InferResponseType<typeof client.test.users.$get>
+type UsersResponse = InferResponseType<typeof client.users.$get>
 
 export default function Home() {
   const [exampleData, setExampleData] = React.useState<UsersResponse | null>(null)
@@ -16,7 +16,7 @@ export default function Home() {
   const handleRequest = async () => {
     setLoading(true)
     try {
-      const res = await client.test.users.$get()
+      const res = await client.users.$get()
       if (!res.ok) {
         toast.error('请求失败，请稍后重试。')
         throw new Error(`HTTP error! status: ${res.status}`)
@@ -38,30 +38,26 @@ export default function Home() {
     setLoading(true)
     try {
       const res = await client.users.$post({
-        json: {
-          fullName: newUserName,
-          age: 18,
-        },
+        json: { fullName: newUserName, age: 18 },
       })
 
       if (res.ok) {
         const responseData = await res.json()
-
         if (responseData.success && responseData.data) {
           setExampleData((prev) => (prev ? [...prev, responseData.data!] : [responseData.data!]))
-
-          toast.success('EXECUTE_SUCCESS: 数据已本地同步')
+          toast.success('添加成功')
           setNewUserName('')
         }
+      } else {
+        toast.error(`提交失败: 输入内容不合规`)
       }
     } catch (error) {
-      toast.error('执行失败')
+      toast.error('网络或系统错误')
       console.error(error)
     } finally {
       setLoading(false)
     }
   }
-
   return (
     <main className="min-h-screen bg-white dark:bg-zinc-950 px-6 py-12 text-zinc-900 dark:text-zinc-50">
       <div className="mx-auto max-w-5xl">

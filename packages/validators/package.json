@@ -14,13 +14,14 @@
     }
   },
   "scripts": {
-    "build": "tsdown --entry src/index.ts --dts-eager --external @repo/db",
+    "build": "tsdown",
     "lint": "turbo lint --filter=@repo/validators"
   },
   "dependencies": {
     "drizzle-orm": "catalog:",
     "drizzle-zod": "^0.8.3",
-    "zod": "catalog:"
+    "zod": "catalog:",
+    "@repo/db": "workspace:*"
   },
   "devDependencies": {
     "@repo/tsdown-config": "workspace:*",

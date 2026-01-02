@@ -1,4 +1,4 @@
-import { insertUserSchema as baseInsertUserSchema } from '@repo/db'
+import { insertUserSchema as baseInsertUserSchema } from '@repo/db/schema'
 import { z } from 'zod'
 
 export const insertUserSchema = baseInsertUserSchema
@@ -12,4 +12,4 @@ export const insertUserSchema = baseInsertUserSchema
 
 export type InsertUser = z.infer<typeof insertUserSchema>
 
-export type { User } from '@repo/db'
+export type { User } from '@repo/db/schema'
