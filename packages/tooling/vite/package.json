@@ -1,0 +1,20 @@
+{
+  "name": "@repo/vite-config",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "dependencies": {
+    "vite": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "@tailwindcss/vite": "catalog:"
+  },
+  "peerDependencies": {
+    "typescript": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  }
+}
