@@ -72,7 +72,7 @@ export const createViteConfig = (options: RepoViteConfigOptions) => {
     const envConfig: UserConfig = isProd
       ? {
           build: {
-            outDir: isProd ? 'dist/prod' : `dist/${mode}`,
+            outDir: 'dist',
             minify: isProd,
             sourcemap: !isProd,
             emptyOutDir: true, // Ensure the custom path will be cleared
