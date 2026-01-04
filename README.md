@@ -95,5 +95,6 @@ pnpm db:studio
 - [ADR 001: Replacing ESLint with Oxlint for Performance](./docs/adr/001-use-oxlint.md)
 - [ADR 002: End-to-End Type Safety via Drizzle-Zod SSOT](./docs/adr/002-drizzle-zod-ssot.md)
 - [ADR 003: Monorepo Source Redirect for Seamless DX](./docs/adr/003-source-redirect-mode.md)
+- [ADR 004: Vite Config File](./docs//adr//004-vite.config.md)
 
 # Built with 🦀 by the Rust Toolchain Revolution.
