@@ -7,9 +7,7 @@
     "paths": {
       "src/*": ["./src/*"],
       "@/*": ["./src/*"]
-    },
-    "composite": true
+    }
   },
-  "include": ["src"],
-  "references": []
+  "include": ["src"]
 }

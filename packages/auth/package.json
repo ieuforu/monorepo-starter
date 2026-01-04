@@ -5,12 +5,7 @@
   "sideEffects": false,
   "types": "./dist/index.d.mts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.mts",
-      "development": "./src/index.ts",
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.mjs"
-    }
+    ".": "./src/index.ts"
   },
   "scripts": {
     "build": "tsdown",

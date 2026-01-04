@@ -3,7 +3,7 @@
 import type { InferResponseType } from '@repo/server'
 import { Button, Card, CardTitle, Input, Separator, Skeleton, toast } from '@repo/ui'
 import React from 'react'
-import { client } from '@/lib/api'
+import { client } from '../lib/api'
 
 type UsersResponse = InferResponseType<typeof client.users.$get>
 

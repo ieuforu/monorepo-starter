@@ -4,8 +4,8 @@ const App = () => {
   return (
     <div>
       <h1 className={'text-5xl font-semibold text-cyan-500'}>Hello React + Vite</h1>
-      {[1, 2, 3].map((item, index) => (
-        <li className="px-6 bg-amber-400" key={`item_${index}`}>
+      {[1, 2, 3].map((item) => (
+        <li className="px-6 bg-amber-400" key={`item_${item}`}>
           {item}
         </li>
       ))}

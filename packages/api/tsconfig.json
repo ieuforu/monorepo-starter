@@ -4,17 +4,8 @@
   "compilerOptions": {
     "lib": ["ES2022"],
     "outDir": "dist",
-    "rootDir": "src",
-    "baseUrl": ".",
-    "composite": true,
-    "paths": {
-      "@repo/db": ["../db/src/index.ts"],
-      "@repo/auth": ["../auth/src/index.ts"],
-      "@repo/tsdown-config": ["../tooling/tsdown-config/base.ts"]
-    }
+    "baseUrl": "."
   },
-
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"],
-  "references": [{ "path": "../db" }, { "path": "../auth" }]
+  "include": ["src/**/*.ts", "../../packages/auth/src/**/*.ts", "../../packages/db/src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }
