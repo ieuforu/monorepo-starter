@@ -76,7 +76,7 @@ export const createViteConfig = (options: RepoViteConfigOptions) => {
             minify: isProd,
             sourcemap: !isProd,
             emptyOutDir: true, // Ensure the custom path will be cleared
-            rollupOptions: {
+            rolldownOptions: {
               output: {
                 manualChunks(id) {
                   if (id.includes('node_modules')) {
