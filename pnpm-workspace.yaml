@@ -4,26 +4,45 @@ packages:
   - 'packages/tooling/*'
 
 catalog:
-  next: "^16.0.10"
-  react: "^19.2.3"
-  react-dom: "^19.2.3"
-  tailwindcss: "^4.1.18"
-  zod: "^4.2.1"
-  drizzle-orm: "^0.45.1"
-  hono: "^4.11.1"
-  lucide-react: "^0.561.0"
   typescript: "^5.9.3"
-  vite: "^8.0.0-beta.5"
-  tsdown: "^0.18.2"
-  tsx: "^4.21.0"
-  mysql2: "^3.16.0"
-  drizzle-kit: "^0.31.8"
-  drizzle-seed: "^0.3.1"
-  drizzle-zod: "^0.8.3"
-  "@trpc/server": "^11.8.1"
+  eslint: "^9.39.2"
+  zod: "^4.3.5"
+  lucide-react: "^0.562.0"
   "@types/node": "^25.0.3"
-  "@types/react": "^19.2.7"
-  "@types/react-dom": "^19.2.3"
-  "@vitejs/plugin-legacy": "^7.2.1"
-  "@vitejs/plugin-react": "^5.1.2"
-  "@tailwindcss/vite": "^4.1.18"
+
+catalogs:
+  framework-react:
+    react: "^19.2.3"
+    react-dom: "^19.2.3"
+    "@types/react": "^19.2.7"
+    "@types/react-dom": "^19.2.3"
+
+  web-next:
+    next: "^16.1.1"
+    "@next/eslint-plugin-next": "^16.1.1"
+    "@tailwindcss/postcss": "^4.1.18"
+    postcss: "^8.5.6"
+
+  build-vite:
+    vite: "^7.2.4"
+    "@vitejs/plugin-react": "^5.1.2"
+    "@vitejs/plugin-legacy": "^7.2.1"
+    "@tailwindcss/vite": "^4.1.18"
+
+  styling:
+    tailwindcss: "^4.1.18"
+    tailwind-merge: "^3.4.0"
+
+  data-layer:
+    hono: "^4.11.3"
+    drizzle-orm: "^0.45.1"
+    drizzle-kit: "^0.31.8"
+    drizzle-seed: "^0.3.1"
+    drizzle-zod: "^0.8.3"
+    mysql2: "^3.16.0"
+    "@trpc/server": "^11.8.1"
+    "next-auth": "5.0.0-beta.30"
+
+  build-tools:
+    tsdown: "^0.18.2"
+    tsx: "^4.21.0"

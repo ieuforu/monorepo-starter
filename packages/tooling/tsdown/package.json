@@ -10,6 +10,6 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "tsdown": "catalog:"
+    "tsdown": "catalog:build-tools"
   }
 }

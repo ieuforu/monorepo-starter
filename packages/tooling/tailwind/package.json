@@ -7,10 +7,10 @@
     "./globals.css": "./globals.css"
   },
   "peerDependencies": {
-    "tailwindcss": "catalog:"
+    "tailwindcss": "catalog:styling"
   },
   "devDependencies": {
     "@repo/tsdown-config": "workspace:*",
-    "tsdown": "catalog:"
+    "tsdown": "catalog:build-tools"
   }
 }

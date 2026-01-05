@@ -21,10 +21,10 @@
   },
   "devDependencies": {
     "@repo/tsdown-config": "workspace:*",
-    "tsdown": "catalog:"
+    "tsdown": "catalog:build-tools"
   },
   "dependencies": {
-    "@trpc/server": "catalog:",
-    "hono": "catalog:"
+    "@trpc/server": "catalog:data-layer",
+    "hono": "catalog:data-layer"
   }
 }

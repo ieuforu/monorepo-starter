@@ -11,17 +11,17 @@
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "@repo/vite-config": "workspace:*",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
+    "@types/react": "catalog:framework-react",
+    "@types/react-dom": "catalog:framework-react",
     "@types/node": "catalog:",
-    "@tailwindcss/vite": "catalog:",
+    "@tailwindcss/vite": "catalog:build-vite",
     "typescript": "catalog:",
-    "vite": "catalog:",
-    "tailwindcss": "catalog:"
+    "vite": "catalog:build-vite",
+    "tailwindcss": "catalog:styling"
   },
   "dependencies": {
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "react": "catalog:framework-react",
+    "react-dom": "catalog:framework-react"
   },
   "packageManager": "pnpm@10.26.0"
 }

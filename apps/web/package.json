@@ -17,21 +17,21 @@
     "@repo/api": "workspace:*",
     "@repo/auth": "workspace:*",
     "@repo/server": "workspace:*",
-    "next": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "next": "catalog:web-next",
+    "react": "catalog:framework-react",
+    "react-dom": "catalog:framework-react"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^16.0.8",
+    "@next/eslint-plugin-next": "catalog:web-next",
     "@repo/tsdown-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@tailwindcss/postcss": "^4.1.18",
-    "eslint": "^9.39.1",
-    "postcss": "^8.5.6",
-    "tailwindcss": "catalog:",
+    "@tailwindcss/postcss": "catalog:web-next",
+    "eslint": "catalog:",
+    "postcss": "catalog:web-next",
+    "tailwindcss": "catalog:styling",
     "@types/node": "catalog:",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
+    "@types/react": "catalog:framework-react",
+    "@types/react-dom": "catalog:framework-react",
     "typescript": "catalog:"
   }
 }

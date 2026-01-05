@@ -19,6 +19,6 @@
   },
   "devDependencies": {
     "@repo/tsdown-config": "workspace:*",
-    "tsdown": "catalog:"
+    "tsdown": "catalog:build-tools"
   }
 }

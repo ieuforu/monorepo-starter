@@ -13,9 +13,9 @@
   },
   "devDependencies": {
     "@repo/tsdown-config": "workspace:*",
-    "tsdown": "catalog:"
+    "tsdown": "catalog:build-tools"
   },
   "dependencies": {
-    "next-auth": "5.0.0-beta.30"
+    "next-auth": "catalog:data-layer"
   }
 }

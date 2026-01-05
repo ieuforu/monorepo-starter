@@ -28,16 +28,16 @@
     "clsx": "^2.1.1",
     "lucide-react": "catalog:",
     "next-themes": "^0.4.6",
-    "react": "catalog:",
-    "react-dom": "catalog:",
+    "react": "catalog:framework-react",
+    "react-dom": "catalog:framework-react",
     "sonner": "^2.0.7",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "catalog:styling"
   },
   "devDependencies": {
     "@repo/tsdown-config": "workspace:*",
-    "tsdown": "catalog:",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
+    "tsdown": "catalog:build-tools",
+    "@types/react": "catalog:framework-react",
+    "@types/react-dom": "catalog:framework-react",
     "typescript": "catalog:"
   }
 }

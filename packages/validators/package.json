@@ -18,13 +18,13 @@
     "lint": "turbo lint --filter=@repo/validators"
   },
   "dependencies": {
-    "drizzle-orm": "catalog:",
-    "drizzle-zod": "catalog:",
+    "drizzle-orm": "catalog:data-layer",
+    "drizzle-zod": "catalog:data-layer",
     "zod": "catalog:",
     "@repo/db": "workspace:*"
   },
   "devDependencies": {
     "@repo/tsdown-config": "workspace:*",
-    "tsdown": "catalog:"
+    "tsdown": "catalog:build-tools"
   }
 }

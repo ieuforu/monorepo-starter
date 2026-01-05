@@ -8,13 +8,13 @@
     ".": "./index.ts"
   },
   "dependencies": {
-    "vite": "catalog:",
-    "@vitejs/plugin-react": "catalog:",
-    "@tailwindcss/vite": "catalog:"
+    "vite": "catalog:build-vite",
+    "@vitejs/plugin-react": "catalog:build-vite",
+    "@tailwindcss/vite": "catalog:build-vite"
   },
   "peerDependencies": {
     "typescript": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "react": "catalog:framework-react",
+    "react-dom": "catalog:framework-react"
   }
 }
