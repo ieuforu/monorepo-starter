@@ -1,0 +1,9 @@
+{
+  "name": "@repo/vitest-config",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "lint": "true",
+    "lint:fix": "true"
+  }
+}

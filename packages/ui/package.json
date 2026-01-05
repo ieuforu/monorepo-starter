@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "tsdown",
-    "lint": "turbo lint --filter=@repo/ui"
+    "lint": "oxlint --deny correctness --deny perf --quiet",
+    "lint:fix": "oxlint --fix && biome check --write --unsafe --no-errors-on-unmatched"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

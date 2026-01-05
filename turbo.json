@@ -15,6 +15,9 @@
       "cache": true,
       "inputs": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.css", "biome.json"]
     },
+    "lint:fix": {
+      "cache": false
+    },
     "typecheck": {
       "dependsOn": ["^build"],
       "outputs": ["**/*.tsbuildinfo"]

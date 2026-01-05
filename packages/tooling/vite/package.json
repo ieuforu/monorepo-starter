@@ -7,6 +7,10 @@
   "exports": {
     ".": "./index.ts"
   },
+  "scripts": {
+    "lint": "true",
+    "lint:fix": "true"
+  },
   "dependencies": {
     "vite": "catalog:build-vite",
     "@vitejs/plugin-react": "catalog:build-vite",

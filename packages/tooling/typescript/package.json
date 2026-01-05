@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
+  "scripts": {
+    "lint": "true",
+    "lint:fix": "true"
+  },
   "devDependencies": {
     "@repo/tsdown-config": "workspace:*",
     "tsdown": "catalog:build-tools"

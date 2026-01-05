@@ -1,0 +1,7 @@
+**/dist/**
+**/.next/**
+**/build/**
+**/.turbo/**
+node_modules
+*.log
+.DS_Store

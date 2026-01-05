@@ -2,6 +2,9 @@ packages:
   - 'apps/*'
   - 'packages/*'
   - 'packages/tooling/*'
+  - '!**/.*'
+  - '!**/node_modules'
+  - '!**/dist'
 
 catalog:
   typescript: "^5.9.3"
