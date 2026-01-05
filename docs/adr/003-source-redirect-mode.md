@@ -1,19 +1,41 @@
-# ADR 003: 采用基于 package.json exports 的源码重定向模式
+# ADR 003: Monorepo Source Redirect for Seamless DX
 
-## 状态
-已接受 (Accepted)
+## Status
+Accepted
 
-## 背景
-传统的 Monorepo 协作依赖 `tsconfig paths` 进行源码映射，但这并非 Node.js 标准协议，容易导致构建工具（如 Bun build）与 IDE（TS Server）解析逻辑不一致。
+## Context
+在传统的 TypeScript Monorepo 中，当 `apps/web` 引用 `packages/ui` 时，构建工具（如 Vite 或 Turbopack）通常会去读取 `packages/ui/dist` 里的编译产物。
+这导致了一个极其糟糕的开发体验：
+1. **二次编译**：修改 UI 组件后，必须手动或通过 watch 运行 `build`，外部应用才能看到更新。
+2. **调试困难**：由于引用的是编译后的 `.mjs`，点击“跳转到定义”会跳到混淆后的代码，而非源代码。
+3. **缓存失效**：频繁的 `dist` 更新会导致 Turborepo 缓存频繁失效。
 
-## 决策
-全面移除所有包及应用的 `tsconfig.json` 中的 `paths` 配置。利用 `package.json` 的 `exports` 字段定义 `development` 条件分支，指向 `src/index.ts`。
+## Decision
+我们决定采用 **"Source Redirect" (源码重定向)** 模式。
+通过在各 `packages/*/package.json` 中配置特殊的导出字段，强制开发工具链（Bun, Vite, Turbopack, tsdown）直接读取 `src/*.ts` 源码。
 
-## 理由
-1. **标准协议**：`exports` 是 Node.js 官方标准，被所有现代构建工具（Bun, Rolldown, Turbopack）原生支持。
-2. **零手动维护**：无需在每个 App 的 `tsconfig` 中手动维护冗长的路径列表。
-3. **IDE 性能**：减少 TypeScript 语言服务器的解析负担，提升大型 Monorepo 中的响应速度。
+### Implementation:
+在 `package.json` 中定义 `exports`：
+```json
+{
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./src/index.ts" 
+      }
+    }
+  }
+}
+```
+> 在生产构建（Production Build）时，打包工具（如 Rolldown/Vite）会根据 exports 协议优先处理代码压缩与转换，确保产物性能。”
 
-## 后果
-* **优点**：实现了“真源码引用”，开发者修改 `packages/db` 的代码，`apps/web` 会通过标准的模块解析逻辑立即感知。
-* **影响**：要求各包的 `package.json` 必须严格声明 `exports`，且 App 需要配置 `moduleResolution: "bundler"` 以支持该特性。
+## Rationale
+1. **消除构建依赖 (Decoupling Build)**: 使得子包在开发环境下不再依赖 `build` 任务，彻底解决了“修改代码后必须先 build 才能生效”的陈旧流转模式。
+2. **优化 IO 与内存 (Performance)**: 直接读取内存中的 TS 源码树，避免了频繁读写磁盘 `dist` 目录带来的 IO 开销。
+
+## Consequences
+- **Instant HMR**: 修改任何 Package 的源码，`apps/web` 都会实现毫秒级的热更新。
+- **True SSOT**: 源码即是唯一的真相，彻底告别“忘记 build”导致的类型报错。
+- **Enhanced Debugging**: IDE 会直接跳转到 TypeScript 源码，支持完美的断点调试。
+- **Complexity**: 需要消费端工具链（如 Vite）具备解析 TS 源码的能力。

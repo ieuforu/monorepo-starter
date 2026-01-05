@@ -19,7 +19,14 @@
       "cache": false
     },
     "typecheck": {
+      "cache": true,
       "dependsOn": ["^build"],
+      "inputs": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "tsconfig.json",
+        "../../packages/typescript-config/*.json"
+      ],
       "outputs": ["**/*.tsbuildinfo"]
     },
     "db:push": {

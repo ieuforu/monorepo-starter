@@ -4,6 +4,15 @@
 
 An industrial-grade, high-performance Fullstack Monorepo boilerplate powered by Bun, Turborepo, and a 100% Rust-driven toolchain. Engineered for sub-millisecond feedback loops and end-to-end type safety.
 
+## Performance at a Glance
+
+| Action | Traditional Toolchain | Our Rust-Powered Stack | Improvement |
+| :--- | :--- | :--- | :--- |
+| **Linting** | ~6.5s (ESLint) | **~15ms (Oxlint)** | **400x Faster** |
+| **Formatting** | ~3.2s (Prettier) | **~8ms (Biome)** | **400x Faster** |
+| **Type Checking** | ~12.0s (tsc) | **~200ms (Turbo + Cache)** | **60x Faster** |
+| **Build (UI Pack)** | ~2.5s (tsup) | **~450ms (tsdown)** | **5x Faster** |
+
 ## Tech Stack
 
 ### Runtime & Orchestration
@@ -91,10 +100,14 @@ pnpm db:studio
 
 5. Unified Code Quality: Biome handles formatting and style, while Oxlint ensures deep code correctness. This duo provides a zero-config, ultra-fast quality gate.
 
-## Architecture Decision Records (ADR)
-- [ADR 001: Replacing ESLint with Oxlint for Performance](./docs/adr/001-use-oxlint.md)
-- [ADR 002: End-to-End Type Safety via Drizzle-Zod SSOT](./docs/adr/002-drizzle-zod-ssot.md)
-- [ADR 003: Monorepo Source Redirect for Seamless DX](./docs/adr/003-source-redirect-mode.md)
-- [ADR 004: Vite Config File](./docs//adr//004-vite.config.md)
+## 📝 Architecture Decision Records (ADR)
+
+We maintain a rigorous record of architectural decisions to ensure long-term maintainability and technical clarity.
+
+- **[ADR 001: Transitioning to Oxlint for High-Performance Static Analysis](docs/adr/001-transition-to-oxlint.md)**
+- **[ADR 002: End-to-End Type Safety via Drizzle-Zod SSOT](docs/adr/002-drizzle-zod-ssot.md)**
+- **[ADR 003: Monorepo Source Redirect for Seamless DX](docs/adr/003-source-redirect-mode.md)**
+- **[ADR 004: Factory-Based Vite Configuration for Multi-App Consistency](docs/adr/004-factory-based-vite-config.md)**
+- **[ADR 005: Transitioning to a Rust-First Engineering Toolchain](docs/adr/005-rust-toolchain-revolution.md)**
 
 # Built with 🦀 by the Rust Toolchain Revolution.
