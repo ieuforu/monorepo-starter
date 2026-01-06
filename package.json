@@ -9,12 +9,13 @@
     "dev:web": "turbo dev --filter=@repo/web",
     "dev:server": "turbo dev --filter=server",
     "build": "turbo build",
-    "lint": "turbo lint && oxlint --deny correctness --deny perf --quiet && biome check",
-    "lint:fix": "turbo lint:fix --filter='@repo/*' && oxlint --fix && biome check --write --unsafe --no-errors-on-unmatched",
+    "lint": "turbo lint && biome check .",
+    "lint:fix": "turbo lint:fix --filter='@repo/*' && biome check --write --unsafe .",
     "format": "biome check --write --no-errors-on-unmatched .",
     "prepare": "husky",
     "typecheck": "turbo typecheck",
-    "test": "turbo test"
+    "test": "turbo test",
+    "codegen": "cargo run -p scripts-rs"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",

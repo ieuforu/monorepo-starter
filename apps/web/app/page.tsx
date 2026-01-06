@@ -2,6 +2,7 @@
 
 import type { InferResponseType } from '@repo/server'
 import { Button, Card, CardTitle, Input, Separator, Skeleton, toast } from '@repo/ui'
+import { trpc } from 'lib/trpc'
 import React from 'react'
 import { client } from '../lib/api'
 
@@ -58,6 +59,8 @@ export default function Home() {
       setLoading(false)
     }
   }
+  const projects = trpc.project.list.useQuery()
+
   return (
     <main className="min-h-screen bg-white dark:bg-zinc-950 px-6 py-12 text-zinc-900 dark:text-zinc-50">
       <div className="mx-auto max-w-5xl">
@@ -78,6 +81,53 @@ export default function Home() {
             {loading ? 'FETCHING...' : 'SYNC DATABASE'}
           </Button>
         </header>
+
+        <section className="mb-16">
+          <div className="flex items-center gap-2 mb-6">
+            <div className="h-2 w-2 bg-blue-600 animate-pulse" />
+            <h2 className="font-mono text-sm font-black uppercase tracking-[0.2em]">
+              Live_Projects_Feed (via tRPC)
+            </h2>
+          </div>
+
+          {projects.isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[1, 2, 3].map((i) => (
+                <Skeleton
+                  key={i}
+                  className="h-24 w-full rounded-none bg-zinc-100 dark:bg-zinc-900"
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {projects.data?.map((project) => (
+                <div
+                  key={project.id}
+                  className="group relative border-2 border-zinc-900 p-4 transition-all hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] dark:border-zinc-50 dark:hover:shadow-[4px_4px_0px_0px_rgba(250,250,250,1)]"
+                >
+                  <div className="flex justify-between items-start mb-2">
+                    <span className="font-mono text-[10px] text-zinc-400">
+                      ID_{project.id.toString().padStart(3, '0')}
+                    </span>
+                    <span className="bg-blue-600 px-1.5 py-0.5 font-mono text-[10px] text-white font-bold">
+                      {project.stars}★
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold truncate uppercase tracking-tighter">
+                    {project.name}
+                  </h3>
+                  <div className="mt-4 h-1 w-full bg-zinc-100 dark:bg-zinc-800">
+                    <div
+                      className="h-full bg-zinc-900 dark:bg-zinc-50 transition-all duration-1000"
+                      style={{ width: `${Math.min(project.stars / 10, 100)}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
 
         <div className="mb-12 flex items-center gap-4">
           <div className="relative flex-1">

@@ -18,6 +18,9 @@
     "@repo/api": "workspace:*",
     "@repo/auth": "workspace:*",
     "@repo/server": "workspace:*",
+    "@trpc/client": "catalog:data-layer",
+    "@trpc/react-query": "catalog:data-layer",
+    "@tanstack/react-query": "catalog:data-layer",
     "next": "catalog:web-next",
     "react": "catalog:framework-react",
     "react-dom": "catalog:framework-react"
@@ -27,12 +30,12 @@
     "@repo/tsdown-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@tailwindcss/postcss": "catalog:web-next",
-    "eslint": "catalog:",
-    "postcss": "catalog:web-next",
-    "tailwindcss": "catalog:styling",
     "@types/node": "catalog:",
     "@types/react": "catalog:framework-react",
     "@types/react-dom": "catalog:framework-react",
-    "typescript": "catalog:"
+    "eslint": "catalog:",
+    "typescript": "catalog:",
+    "postcss": "catalog:web-next",
+    "tailwindcss": "catalog:styling"
   }
 }

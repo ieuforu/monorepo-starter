@@ -1,21 +1,28 @@
-import { auth } from '@repo/auth'
+import type { auth } from '@repo/auth'
 import { db } from '@repo/db'
 import { initTRPC, TRPCError } from '@trpc/server'
 
-export interface TRPCContext {
+export type TRPCContext = {
   db: typeof db
   session: Awaited<ReturnType<typeof auth>> | null
   headers: Headers
 }
 
 export const createTRPCContext = async (opts: { headers: Headers }): Promise<TRPCContext> => {
-  const session = await auth()
-  return { db, session, ...opts }
-}
+  try {
+    // TODO: Enable auth when ready
+    // const session = await auth()
+    const session = null
 
+    return { db, session, ...opts }
+  } catch (e) {
+    console.error('❌ Error in createTRPCContext:', e)
+    throw e
+  }
+}
 const t = initTRPC.context<TRPCContext>().create()
 
-export const router = t.router
+export const createTRPCRouter = t.router
 export const publicProcedure = t.procedure
 export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
   if (!ctx.session?.user) {

@@ -17,7 +17,7 @@
     },
     "./schema": {
       "types": "./dist/schema/index.d.mts",
-      "development": "./src/schema/index.ts",
+      "development": "./src/schema/*.ts",
       "default": "./dist/schema/index.mjs"
     }
   },

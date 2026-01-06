@@ -5,6 +5,7 @@ build
 .turbo
 *.log
 .DS_Store
+target/
 #.env
 .env.local
 .vscode

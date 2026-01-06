@@ -50,7 +50,7 @@ An industrial-grade, high-performance Fullstack Monorepo boilerplate powered by 
 └── turbo.json              # Topological pipeline definitions
 ```
 
-## 🛠️ Development Workflow
+## Development Workflow
 
 ```shell
 # Start full-stack development (Next.js + Hono)
@@ -100,7 +100,7 @@ pnpm db:studio
 
 5. Unified Code Quality: Biome handles formatting and style, while Oxlint ensures deep code correctness. This duo provides a zero-config, ultra-fast quality gate.
 
-## 📝 Architecture Decision Records (ADR)
+## Architecture Decision Records (ADR)
 
 We maintain a rigorous record of architectural decisions to ensure long-term maintainability and technical clarity.
 
