@@ -15,7 +15,8 @@
     "prepare": "husky",
     "typecheck": "turbo typecheck",
     "test": "turbo test",
-    "codegen": "cargo run -p scripts-rs"
+    "codegen": "cargo run -p scripts-rs -- dev",
+    "codegen:build": "cargo run -p scripts-rs -- build"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
@@ -29,6 +30,9 @@
     "typescript": "catalog:"
   },
   "lint-staged": {
+    "packages/**/src/**/*.{ts,tsx}": [
+      "pnpm codegen"
+    ],
     "*.{js,jsx,ts,tsx}": [
       "oxlint --fix",
       "biome check --write --unsafe --no-errors-on-unmatched"

@@ -2,12 +2,22 @@
   "name": "@repo/api",
   "version": "0.0.1",
   "type": "module",
-  "types": "./dist/index.d.mts",
+  "types": "./src/index.ts",
   "exports": {
     ".": {
       "types": "./src/index.ts",
-      "import": "./src/index.ts",
-      "default": "./src/index.ts"
+      "development": "./src/index.ts",
+      "default": "./dist/index.mjs"
+    },
+    "./root": {
+      "types": "./src/root.ts",
+      "development": "./src/root.ts",
+      "default": "./dist/root.mjs"
+    },
+    "./trpc": {
+      "types": "./src/trpc.ts",
+      "development": "./src/trpc.ts",
+      "default": "./dist/trpc.mjs"
     }
   },
   "scripts": {
@@ -15,14 +25,14 @@
     "lint": "oxlint --deny correctness --deny perf --quiet",
     "lint:fix": "oxlint --fix && biome check --write --unsafe --no-errors-on-unmatched"
   },
+  "dependencies": {
+    "@repo/auth": "workspace:*",
+    "@repo/db": "workspace:*",
+    "@trpc/server": "catalog:data-layer",
+    "hono": "catalog:data-layer"
+  },
   "devDependencies": {
     "@repo/tsdown-config": "workspace:*",
     "tsdown": "catalog:build-tools"
-  },
-  "dependencies": {
-    "@trpc/server": "catalog:data-layer",
-    "hono": "catalog:data-layer",
-    "@repo/auth": "workspace:*",
-    "@repo/db": "workspace:*"
   }
 }

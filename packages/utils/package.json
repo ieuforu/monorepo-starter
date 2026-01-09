@@ -3,13 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "sideEffects": false,
-  "types": "./dist/index.d.mts",
+  "types": "./src/index.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.mts",
+      "types": "./src/index.ts",
       "development": "./src/index.ts",
-      "import": "./dist/index.mjs",
       "default": "./dist/index.mjs"
     }
   },
@@ -21,5 +19,6 @@
   "devDependencies": {
     "@repo/tsdown-config": "workspace:*",
     "tsdown": "catalog:build-tools"
-  }
+  },
+  "sideEffects": false
 }

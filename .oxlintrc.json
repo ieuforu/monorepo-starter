@@ -1,0 +1,33 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["import"],
+  "rules": {
+    "import/no-restricted-paths": [
+      "error",
+      {
+        "zones": [
+          {
+            "target": "./packages/api",
+            "from": "./apps/web",
+            "message": "❌ 架构错误: 后端 API 包严禁引用前端 App 逻辑 (反向依赖)。"
+          },
+          {
+            "target": "./packages/ui",
+            "from": "./packages/db",
+            "message": "❌ 架构错误: UI 组件库禁止直接操作数据库。请通过 API 或 Server Actions 转发。"
+          },
+          {
+            "target": "./packages/validators",
+            "from": "./packages/api",
+            "message": "❌ 架构错误: 校验逻辑应该是纯净的，不应依赖 API 路由。"
+          },
+          {
+            "target": "**",
+            "from": "./packages/db/src/seed.ts",
+            "message": "❌ 安全警告: 除数据库初始化脚本外，禁止在任何地方引用 seed 数据。"
+          }
+        ]
+      }
+    ]
+  }
+}

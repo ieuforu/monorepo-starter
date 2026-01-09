@@ -2,33 +2,38 @@
   "name": "@repo/db",
   "version": "0.0.1",
   "type": "module",
-  "sideEffects": false,
-  "types": "./dist/index.d.mts",
+  "types": "./src/index.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.mts",
+      "types": "./src/index.ts",
       "development": "./src/index.ts",
       "default": "./dist/index.mjs"
     },
     "./client": {
-      "types": "./dist/client.d.mts",
+      "types": "./src/client.ts",
       "development": "./src/client.ts",
       "default": "./dist/client.mjs"
     },
-    "./schema": {
-      "types": "./dist/schema/index.d.mts",
-      "development": "./src/schema/*.ts",
-      "default": "./dist/schema/index.mjs"
+    "./seed": {
+      "types": "./src/seed.ts",
+      "development": "./src/seed.ts",
+      "default": "./dist/seed.mjs"
     }
   },
   "scripts": {
     "build": "tsdown",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio",
     "db:seed": "bun src/seed.ts",
+    "db:studio": "drizzle-kit studio",
     "lint": "oxlint --deny correctness --deny perf --quiet",
     "lint:fix": "oxlint --fix && biome check --write --unsafe --no-errors-on-unmatched"
+  },
+  "dependencies": {
+    "drizzle-orm": "catalog:data-layer",
+    "drizzle-zod": "catalog:data-layer",
+    "mysql2": "catalog:data-layer",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@repo/tsdown-config": "workspace:*",
@@ -36,10 +41,5 @@
     "drizzle-seed": "catalog:data-layer",
     "tsdown": "catalog:build-tools"
   },
-  "dependencies": {
-    "drizzle-orm": "catalog:data-layer",
-    "drizzle-zod": "catalog:data-layer",
-    "mysql2": "catalog:data-layer",
-    "zod": "catalog:"
-  }
+  "sideEffects": false
 }
