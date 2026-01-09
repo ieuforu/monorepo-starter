@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "turbo dev --filter=@repo/server --filter=@repo/web",
     "dev:web": "turbo dev --filter=@repo/web",
-    "dev:server": "turbo dev --filter=server",
+    "dev:server": "turbo dev --filter=@repo/server",
     "build": "turbo build",
     "lint": "turbo lint && biome check .",
     "lint:fix": "turbo lint:fix --filter='@repo/*' && biome check --write --unsafe .",

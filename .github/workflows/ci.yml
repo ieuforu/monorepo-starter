@@ -13,6 +13,10 @@ jobs:
       DATABASE_URL: mysql://root:password@localhost:3306/test
     steps:
       - uses: actions/checkout@v4
+      
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
 
       - uses: oven-sh/setup-bun@v1
         with:
@@ -27,6 +31,11 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Verify Codegen & Architecture Guardrails
+        run: |
+          pnpm codegen
+          git diff --exit-code
 
       - name: Lint
         run: pnpm lint
