@@ -7,17 +7,20 @@
     ".": {
       "types": "./src/index.ts",
       "development": "./src/index.ts",
-      "default": "./dist/index.mjs"
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
     },
     "./root": {
       "types": "./src/root.ts",
       "development": "./src/root.ts",
-      "default": "./dist/root.mjs"
+      "import": "./src/root.ts",
+      "default": "./src/root.ts"
     },
     "./trpc": {
       "types": "./src/trpc.ts",
       "development": "./src/trpc.ts",
-      "default": "./dist/trpc.mjs"
+      "import": "./src/trpc.ts",
+      "default": "./src/trpc.ts"
     }
   },
   "scripts": {

@@ -7,17 +7,20 @@
     ".": {
       "types": "./src/index.ts",
       "development": "./src/index.ts",
-      "default": "./dist/index.mjs"
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
     },
     "./client": {
       "types": "./src/client.ts",
       "development": "./src/client.ts",
-      "default": "./dist/client.mjs"
+      "import": "./src/client.ts",
+      "default": "./src/client.ts"
     },
     "./seed": {
       "types": "./src/seed.ts",
       "development": "./src/seed.ts",
-      "default": "./dist/seed.mjs"
+      "import": "./src/seed.ts",
+      "default": "./src/seed.ts"
     }
   },
   "scripts": {

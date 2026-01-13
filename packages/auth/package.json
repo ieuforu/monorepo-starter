@@ -7,17 +7,20 @@
     ".": {
       "types": "./src/index.ts",
       "development": "./src/index.ts",
-      "default": "./dist/index.mjs"
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
     },
     "./config": {
       "types": "./src/config.ts",
       "development": "./src/config.ts",
-      "default": "./dist/config.mjs"
+      "import": "./src/config.ts",
+      "default": "./src/config.ts"
     },
     "./providers": {
       "types": "./src/providers.ts",
       "development": "./src/providers.ts",
-      "default": "./dist/providers.mjs"
+      "import": "./src/providers.ts",
+      "default": "./src/providers.ts"
     }
   },
   "scripts": {
