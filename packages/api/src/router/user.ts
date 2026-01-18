@@ -8,10 +8,23 @@ export const userRouter = createTRPCRouter({
   create: publicProcedure
     .input(insertUserSchema.pick({ fullName: true, age: true }))
     .mutation(async ({ ctx, input }) => {
-      await ctx.db.insert(users).values({
+      const [result] = await ctx.db.insert(users).values({
         fullName: input.fullName,
         age: input.age,
       })
-      return { success: true }
+
+      if (!result.insertId) {
+        throw new Error('Failed to insert user: No ID returned')
+      }
+
+      return {
+        id: result.insertId,
+        ...input,
+        success: true,
+      }
     }),
+
+  list: publicProcedure.query(async ({ ctx }) => {
+    return await ctx.db.select().from(users)
+  }),
 })

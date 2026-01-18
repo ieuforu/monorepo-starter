@@ -1,66 +1,41 @@
 'use client'
 
-import type { InferResponseType } from '@repo/server'
+// import type { InferResponseType } from '@repo/server'
 import { Button, Card, CardTitle, Input, Separator, Skeleton, toast } from '@repo/ui'
 import { trpc } from 'lib/trpc'
 import React from 'react'
-import { client } from '../lib/api'
+// import type { client } from '../lib/api'
 
-type UsersResponse = InferResponseType<typeof client.users.$get>
+// type UsersResponse = InferResponseType<typeof client.users.$get>
 
 export default function Home() {
-  const [exampleData, setExampleData] = React.useState<UsersResponse | null>(null)
-  const [loading, setLoading] = React.useState(false)
-
+  const utils = trpc.useUtils()
   const [newUserName, setNewUserName] = React.useState('')
 
-  const handleRequest = async () => {
-    setLoading(true)
-    try {
-      const res = await client.users.$get()
-      if (!res.ok) {
-        toast.error('请求失败，请稍后重试。')
-        throw new Error(`HTTP error! status: ${res.status}`)
-      }
-      const data = await res.json()
-      toast.success('请求成功！数据已同步。')
-      setExampleData(data)
-    } catch (error) {
-      toast.error('请求失败，请稍后重试。')
-      console.error('❌ 请求失败:', error)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const handlePostRequest = async () => {
-    if (!newUserName) return toast.error('请输入内容')
-
-    setLoading(true)
-    try {
-      const res = await client.users.$post({
-        json: { fullName: newUserName, age: 18 },
-      })
-
-      if (res.ok) {
-        const responseData = await res.json()
-        if (responseData.success && responseData.data) {
-          setExampleData((prev) => (prev ? [...prev, responseData.data!] : [responseData.data!]))
-          toast.success('添加成功')
-          setNewUserName('')
-        }
-      } else {
-        toast.error(`提交失败: 输入内容不合规`)
-      }
-    } catch (error) {
-      toast.error('网络或系统错误')
-      console.error(error)
-    } finally {
-      setLoading(false)
-    }
-  }
+  const usersQuery = trpc.user.list.useQuery()
   const projects = trpc.project.list.useQuery()
 
+  const loading = usersQuery.isFetching || projects.isFetching
+
+  const handleRequest = () => {
+    usersQuery.refetch()
+  }
+
+  const createMutation = trpc.user.create.useMutation({
+    onSuccess: () => {
+      toast.success('添加成功')
+      setNewUserName('')
+      utils.user.list.invalidate()
+    },
+    onError: (error) => {
+      toast.error(`提交失败: ${error.message}`)
+    },
+  })
+
+  const handlePostRequest = () => {
+    if (!newUserName) return toast.error('请输入内容')
+    createMutation.mutate({ fullName: newUserName, age: 18 })
+  }
   return (
     <main className="min-h-screen bg-white dark:bg-zinc-950 px-6 py-12 text-zinc-900 dark:text-zinc-50">
       <div className="mx-auto max-w-5xl">
@@ -155,9 +130,9 @@ export default function Home() {
               <Skeleton key={i} className="h-32 w-full rounded-none bg-zinc-100" />
             ))}
           </div>
-        ) : exampleData ? (
+        ) : usersQuery.data && usersQuery.data.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-zinc-200 border border-zinc-200 dark:bg-zinc-800 dark:border-zinc-800">
-            {exampleData.map((user) => (
+            {usersQuery.data.map((user) => (
               <Card
                 key={user.id}
                 className="rounded-none border-none bg-white p-6 transition-colors hover:bg-zinc-50 dark:bg-zinc-950 dark:hover:bg-zinc-900"
