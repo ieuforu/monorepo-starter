@@ -10,6 +10,12 @@
       "import": "./src/index.ts",
       "default": "./src/index.ts"
     },
+    "./index.test": {
+      "types": "./src/index.test.ts",
+      "development": "./src/index.test.ts",
+      "import": "./src/index.test.ts",
+      "default": "./src/index.test.ts"
+    },
     "./root": {
       "types": "./src/root.ts",
       "development": "./src/root.ts",
@@ -21,6 +27,12 @@
       "development": "./src/trpc.ts",
       "import": "./src/trpc.ts",
       "default": "./src/trpc.ts"
+    },
+    "./user.test": {
+      "types": "./src/user.test.ts",
+      "development": "./src/user.test.ts",
+      "import": "./src/user.test.ts",
+      "default": "./src/user.test.ts"
     }
   },
   "scripts": {
@@ -32,6 +44,7 @@
     "@repo/auth": "workspace:*",
     "@repo/db": "workspace:*",
     "@trpc/server": "catalog:data-layer",
+    "drizzle-orm": "^0.45.1",
     "hono": "catalog:data-layer"
   },
   "devDependencies": {

@@ -14,9 +14,10 @@
     "format": "biome check --write --no-errors-on-unmatched .",
     "prepare": "husky",
     "typecheck": "turbo typecheck",
-    "test": "turbo test",
     "codegen": "cargo run -p scripts-rs -- dev",
-    "codegen:build": "cargo run -p scripts-rs -- build"
+    "codegen:build": "cargo run -p scripts-rs -- build",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
@@ -27,7 +28,8 @@
     "oxlint": "catalog:",
     "tsx": "catalog:build-tools",
     "turbo": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   },
   "lint-staged": {
     "packages/**/src/**/*.{ts,tsx}": [

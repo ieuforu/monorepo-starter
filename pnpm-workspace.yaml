@@ -1,62 +1,58 @@
 packages:
-  - 'apps/*'
-  - 'packages/*'
-  - 'packages/tooling/*'
+  - apps/*
+  - packages/*
+  - packages/tooling/*
   - '!**/.*'
   - '!**/node_modules'
   - '!**/dist'
 
 catalog:
-  typescript: "^5.9.3"
-  eslint: "^9.39.2"
-  zod: "^4.3.5"
-  lucide-react: "^0.562.0"
-  "@types/node": "^25.0.3"
-  "@biomejs/biome": "^2.3.10"
-  "@types/bun": "^1.3.4"
-  husky: "^9.1.7"
-  lint-staged: "^15.2.11"
-  oxlint: "^1.34.0"
-  turbo: "^2.7.3"
+  '@biomejs/biome': ^2.3.10
+  '@types/bun': ^1.3.4
+  '@types/node': ^25.0.3
+  eslint: ^9.39.2
+  husky: ^9.1.7
+  lint-staged: ^15.2.11
+  lucide-react: ^0.562.0
+  oxlint: ^1.34.0
+  turbo: ^2.7.3
+  typescript: ^5.9.3
+  vitest: 4.0.17
+  zod: ^4.3.5
 
 catalogs:
-  framework-react:
-    react: "^19.2.3"
-    react-dom: "^19.2.3"
-    "@types/react": "^19.2.7"
-    "@types/react-dom": "^19.2.3"
-
-  web-next:
-    next: "^16.1.1"
-    "@next/eslint-plugin-next": "^16.1.1"
-    "@tailwindcss/postcss": "^4.1.18"
-    postcss: "^8.5.6"
-
-  build-vite:
-    vite: "^7.2.4"
-    "@vitejs/plugin-react": "^5.1.2"
-    "@vitejs/plugin-legacy": "^7.2.1"
-    "@tailwindcss/vite": "^4.1.18"
-
-  styling:
-    tailwindcss: "^4.1.18"
-    tailwind-merge: "^3.4.0"
-
-  data-layer:
-    hono: "^4.11.3"
-    drizzle-orm: "^0.45.1"
-    drizzle-kit: "^0.31.8"
-    drizzle-seed: "^0.3.1"
-    drizzle-zod: "^0.8.3"
-    mysql2: "^3.16.0"
-    "@trpc/server": "^11.8.1"
-    "@trpc/client": "^11.8.1"
-    "@trpc/react-query": "^11.8.1"
-    "@tanstack/react-query": "^5.62.0"
-    "@hono/zod-validator": "^0.7.5"
-    "@hono/trpc-server": "^0.4.1"
-    "next-auth": "5.0.0-beta.30"
-
   build-tools:
-    tsdown: "^0.18.2"
-    tsx: "^4.21.0"
+    tsdown: ^0.18.2
+    tsx: ^4.21.0
+  build-vite:
+    '@tailwindcss/vite': ^4.1.18
+    '@vitejs/plugin-legacy': ^7.2.1
+    '@vitejs/plugin-react': ^5.1.2
+    vite: ^7.2.4
+  data-layer:
+    '@hono/trpc-server': ^0.4.1
+    '@hono/zod-validator': ^0.7.5
+    '@tanstack/react-query': ^5.62.0
+    '@trpc/client': ^11.8.1
+    '@trpc/react-query': ^11.8.1
+    '@trpc/server': ^11.8.1
+    drizzle-kit: ^0.31.8
+    drizzle-orm: ^0.45.1
+    drizzle-seed: ^0.3.1
+    drizzle-zod: ^0.8.3
+    hono: ^4.11.3
+    mysql2: ^3.16.0
+    next-auth: 5.0.0-beta.30
+  framework-react:
+    '@types/react': ^19.2.7
+    '@types/react-dom': ^19.2.3
+    react: ^19.2.3
+    react-dom: ^19.2.3
+  styling:
+    tailwind-merge: ^3.4.0
+    tailwindcss: ^4.1.18
+  web-next:
+    '@next/eslint-plugin-next': ^16.1.1
+    '@tailwindcss/postcss': ^4.1.18
+    next: ^16.1.1
+    postcss: ^8.5.6

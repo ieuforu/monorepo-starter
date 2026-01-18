@@ -1,0 +1,12 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "moduleResolution": "bundler",
+    "types": ["node", "vitest"],
+    "paths": {
+      "@repo/vitest-config": ["./packages/tooling/vitest/vitest.shared.ts"]
+    }
+  },
+  "include": ["vitest.config.ts"]
+}

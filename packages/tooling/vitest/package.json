@@ -2,8 +2,15 @@
   "name": "@repo/vitest-config",
   "version": "0.0.1",
   "type": "module",
+  "main": "./vitest.shared.ts",
+  "exports": {
+    ".": "./vitest.shared.ts"
+  },
   "scripts": {
     "lint": "true",
     "lint:fix": "true"
+  },
+  "devDependencies": {
+    "vitest": "catalog:"
   }
 }
