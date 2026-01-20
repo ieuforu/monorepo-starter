@@ -1,8 +1,10 @@
 'use client'
 
 // import type { InferResponseType } from '@repo/server'
+// biome-ignore assist/source/organizeImports: <no sorting>
 import { Button, Card, CardTitle, Input, Separator, Skeleton, toast } from '@repo/ui'
-import { trpc } from 'lib/trpc'
+
+import { trpc } from '@/lib/trpc'
 import React from 'react'
 // import type { client } from '../lib/api'
 

@@ -1,14 +1,5 @@
 {
   "extends": "@repo/typescript-config/base.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@repo/db": ["../../packages/db/src/index.ts"],
-      "@repo/db/schema": ["../../packages/db/src/schema/index.ts"],
-      "@repo/validators": ["../../packages/validators/src/index.ts"],
-      "@repo/utils": ["../../packages/utils/src/index.ts"]
-    }
-  },
   "include": ["src/**/*.ts", "../../packages/*/src/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

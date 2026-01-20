@@ -21,6 +21,14 @@
       "development": "./src/seed.ts",
       "import": "./src/seed.ts",
       "default": "./src/seed.ts"
+    },
+    "./schema": {
+      "types": "./src/schema/index.ts",
+      "import": "./src/schema/index.ts"
+    },
+    "./schema/*": {
+      "types": "./src/schema/*.ts",
+      "import": "./src/schema/*.ts"
     }
   },
   "scripts": {

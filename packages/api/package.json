@@ -4,6 +4,7 @@
   "type": "module",
   "types": "./src/index.ts",
   "exports": {
+    "./router/*": "./src/router/*.ts",
     ".": {
       "types": "./src/index.ts",
       "development": "./src/index.ts",
